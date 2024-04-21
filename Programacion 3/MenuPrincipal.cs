@@ -10,17 +10,18 @@ using System.Windows.Forms;
 
 namespace Programacion_3
 {
-    public partial class Form1 : Form
+    public partial class MenuPrincipal : Form
     {
-        public Form1()
+        public MenuPrincipal()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio load = new ArticuloNegocio();
-            dgvArticulos.DataSource = load.listarArticulos();
+          //ArticuloNegocio load = new ArticuloNegocio();
+          //dgvArticulos.DataSource = load.listarArticulos();
         }
+
     }
 }
