@@ -8,6 +8,7 @@ namespace Programacion_3
 {
     class Configs
     {
+        //Datos de conexion a la DDBB
         static public string DbServer { get { return ".\\SQLEXPRESS"; } }
 
         static public string Database { get { return "CATALOGO_P3_DB"; } }

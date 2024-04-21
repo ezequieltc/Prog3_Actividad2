@@ -11,7 +11,7 @@ namespace Programacion_3
     class ArticuloNegocio
     {
 
-        public List<Articulo> listarArticulos()
+            public List<Articulo> listarArticulos()
         {
             List<Articulo> listado = new List<Articulo>();
             SqlConnection conexion = new SqlConnection();
