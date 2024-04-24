@@ -17,11 +17,62 @@ namespace Programacion_3
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+
+
+        private void buttonListado_Click(object sender, EventArgs e)
         {
-          //ArticuloNegocio load = new ArticuloNegocio();
-          //dgvArticulos.DataSource = load.listarArticulos();
+            foreach (Form menu in Application.OpenForms)
+            {
+                if (menu.GetType() == typeof(MenuListar))
+                {
+                    menu.BringToFront();
+                    return;
+                }
+            }
+            MenuListar ventanaMenuListar = new MenuListar();
+            ventanaMenuListar.Show();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (Form menu in Application.OpenForms)
+            {
+                if (menu.GetType()== typeof(MenuAgregar))
+                {
+                    menu.BringToFront();
+                    return;
+                }
+            }
+            MenuAgregar ventanaMenuAgregar = new MenuAgregar();
+            ventanaMenuAgregar.Show();
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            foreach (Form menu in Application.OpenForms)
+            {
+                if (menu.GetType() == typeof(MenuEliminar))
+                {
+                    menu.BringToFront();
+                    return;
+                }
+            }
+            MenuEliminar ventanaMenuEliminar = new MenuEliminar();
+            ventanaMenuEliminar.Show();
+        }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+            foreach (Form menu in Application.OpenForms)
+            {
+                if (menu.GetType() == typeof(MenuEditar))
+                {
+                    menu.BringToFront();
+                    return;
+                }
+            }
+            MenuEditar ventanaMenuEditar = new MenuEditar();
+            ventanaMenuEditar.Show();
+        }
     }
 }

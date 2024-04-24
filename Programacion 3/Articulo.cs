@@ -16,6 +16,5 @@ namespace Programacion_3
 
         public decimal Precio { get; set; }
 
-
     }
 }

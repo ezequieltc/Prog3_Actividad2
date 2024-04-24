@@ -72,6 +72,7 @@
             this.button1.FlatAppearance.BorderSize = 3;
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonBuscar
             // 
@@ -88,6 +89,7 @@
             this.buttonEditar.FlatAppearance.BorderSize = 3;
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.UseVisualStyleBackColor = true;
+            this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
             // 
             // buttonEliminar
             // 
@@ -96,6 +98,7 @@
             this.buttonEliminar.FlatAppearance.BorderSize = 3;
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
             // buttonListado
             // 
@@ -104,6 +107,7 @@
             this.buttonListado.FlatAppearance.BorderSize = 3;
             this.buttonListado.Name = "buttonListado";
             this.buttonListado.UseVisualStyleBackColor = true;
+            this.buttonListado.Click += new System.EventHandler(this.buttonListado_Click);
             // 
             // MenuPrincipal
             // 
@@ -122,7 +126,6 @@
             this.Controls.Add(this.buttonListado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "MenuPrincipal";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
