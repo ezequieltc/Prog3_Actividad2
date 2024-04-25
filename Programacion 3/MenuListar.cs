@@ -51,5 +51,15 @@ namespace Programacion_3
             comboBoxCategoria.Enabled = checkBoxEstado.Checked;
             comboBoxMarca.Enabled = checkBoxEstado.Checked;
         }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
