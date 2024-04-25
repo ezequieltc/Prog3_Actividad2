@@ -52,10 +52,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.txtFiltrarNombre = new System.Windows.Forms.TextBox();
-            this.txtFiltrarMarca = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtFiltroCodigo = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboBoxCat = new System.Windows.Forms.ComboBox();
+            this.BoxMarcaFiltro = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrecio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvArticulos
@@ -131,10 +142,6 @@
             // 
             this.comboBoxMarca.Enabled = false;
             this.comboBoxMarca.FormattingEnabled = true;
-            this.comboBoxMarca.Items.AddRange(new object[] {
-            "Iphone",
-            "Xiaomi",
-            "Santi"});
             this.comboBoxMarca.Location = new System.Drawing.Point(239, 493);
             this.comboBoxMarca.Name = "comboBoxMarca";
             this.comboBoxMarca.Size = new System.Drawing.Size(183, 21);
@@ -152,6 +159,7 @@
             // 
             // textBoxDescripcion
             // 
+            this.textBoxDescripcion.Enabled = false;
             this.textBoxDescripcion.Location = new System.Drawing.Point(17, 595);
             this.textBoxDescripcion.Name = "textBoxDescripcion";
             this.textBoxDescripcion.ReadOnly = true;
@@ -170,6 +178,7 @@
             // 
             // textBoxNombre
             // 
+            this.textBoxNombre.Enabled = false;
             this.textBoxNombre.Location = new System.Drawing.Point(17, 545);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.ReadOnly = true;
@@ -188,6 +197,7 @@
             // 
             // textBoxCodigo
             // 
+            this.textBoxCodigo.Enabled = false;
             this.textBoxCodigo.Location = new System.Drawing.Point(17, 493);
             this.textBoxCodigo.Name = "textBoxCodigo";
             this.textBoxCodigo.ReadOnly = true;
@@ -213,6 +223,7 @@
             this.buttonGuardar.TabIndex = 25;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = true;
+            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // buttonEliminar
             // 
@@ -248,7 +259,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(18, 27);
+            this.label6.Location = new System.Drawing.Point(18, 19);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 13);
             this.label6.TabIndex = 29;
@@ -257,79 +268,175 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(14, 26);
+            this.label5.Location = new System.Drawing.Point(14, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 31;
             this.label5.Text = "Nombre:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(263, 26);
+            this.label4.Location = new System.Drawing.Point(501, 16);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 33;
             this.label4.Text = "Marca:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(511, 26);
+            this.label3.Location = new System.Drawing.Point(236, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 35;
             this.label3.Text = "Categoria:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // btnFiltrar
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(21, 61);
+            this.btnFiltrar.Location = new System.Drawing.Point(718, 20);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltrar.Size = new System.Drawing.Size(59, 51);
             this.btnFiltrar.TabIndex = 38;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
-            this.btnFiltrar.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtFiltrarNombre
             // 
-            this.txtFiltrarNombre.Location = new System.Drawing.Point(108, 19);
+            this.txtFiltrarNombre.Location = new System.Drawing.Point(67, 12);
             this.txtFiltrarNombre.Name = "txtFiltrarNombre";
             this.txtFiltrarNombre.ReadOnly = true;
-            this.txtFiltrarNombre.Size = new System.Drawing.Size(183, 20);
+            this.txtFiltrarNombre.Size = new System.Drawing.Size(159, 20);
             this.txtFiltrarNombre.TabIndex = 39;
-            this.txtFiltrarNombre.TextChanged += new System.EventHandler(this.txtFiltrarNombre_TextChanged);
             // 
-            // txtFiltrarMarca
+            // label7
             // 
-            this.txtFiltrarMarca.Location = new System.Drawing.Point(309, 19);
-            this.txtFiltrarMarca.Name = "txtFiltrarMarca";
-            this.txtFiltrarMarca.ReadOnly = true;
-            this.txtFiltrarMarca.Size = new System.Drawing.Size(183, 20);
-            this.txtFiltrarMarca.TabIndex = 40;
-            this.txtFiltrarMarca.TextChanged += new System.EventHandler(this.txtFiltrarMarca_TextChanged);
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(248, 15);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(43, 13);
+            this.label7.TabIndex = 42;
+            this.label7.Text = "Codigo:";
             // 
-            // textBox3
+            // txtFiltroCodigo
             // 
-            this.textBox3.Location = new System.Drawing.Point(572, 19);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(183, 20);
-            this.textBox3.TabIndex = 41;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.txtFiltroCodigo.Location = new System.Drawing.Point(297, 12);
+            this.txtFiltroCodigo.Name = "txtFiltroCodigo";
+            this.txtFiltroCodigo.ReadOnly = true;
+            this.txtFiltroCodigo.Size = new System.Drawing.Size(183, 20);
+            this.txtFiltroCodigo.TabIndex = 43;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(18, 52);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 13);
+            this.label8.TabIndex = 45;
+            this.label8.Text = "Codigo:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(67, 45);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(159, 20);
+            this.textBox1.TabIndex = 46;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(501, 48);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(40, 13);
+            this.label9.TabIndex = 47;
+            this.label9.Text = "Precio:";
+            // 
+            // comboBoxCat
+            // 
+            this.comboBoxCat.FormattingEnabled = true;
+            this.comboBoxCat.Location = new System.Drawing.Point(297, 48);
+            this.comboBoxCat.Name = "comboBoxCat";
+            this.comboBoxCat.Size = new System.Drawing.Size(183, 21);
+            this.comboBoxCat.TabIndex = 49;
+            this.comboBoxCat.TextChanged += new System.EventHandler(this.CambioCategoria);
+            // 
+            // BoxMarcaFiltro
+            // 
+            this.BoxMarcaFiltro.FormattingEnabled = true;
+            this.BoxMarcaFiltro.Location = new System.Drawing.Point(547, 13);
+            this.BoxMarcaFiltro.Name = "BoxMarcaFiltro";
+            this.BoxMarcaFiltro.Size = new System.Drawing.Size(140, 21);
+            this.BoxMarcaFiltro.TabIndex = 50;
+            this.BoxMarcaFiltro.TextChanged += new System.EventHandler(this.CambioMarcaFil);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(544, 48);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(24, 13);
+            this.label10.TabIndex = 51;
+            this.label10.Text = "De:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(530, 68);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(38, 13);
+            this.label11.TabIndex = 52;
+            this.label11.Text = "Hasta:";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.DecimalPlaces = 2;
+            this.numericUpDown1.Location = new System.Drawing.Point(575, 42);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            276447231,
+            23283,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(112, 20);
+            this.numericUpDown1.TabIndex = 53;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.DecimalPlaces = 2;
+            this.numericUpDown2.Location = new System.Drawing.Point(575, 70);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            276447231,
+            23283,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(112, 20);
+            this.numericUpDown2.TabIndex = 54;
             // 
             // MenuListar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 681);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.txtFiltrarMarca);
+            this.Controls.Add(this.numericUpDown2);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.BoxMarcaFiltro);
+            this.Controls.Add(this.comboBoxCat);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtFiltroCodigo);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.txtFiltrarNombre);
             this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.label1);
@@ -360,6 +467,8 @@
             this.Load += new System.EventHandler(this.MenuListar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrecio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,7 +500,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.TextBox txtFiltrarNombre;
-        private System.Windows.Forms.TextBox txtFiltrarMarca;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtFiltroCodigo;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox comboBoxCat;
+        private System.Windows.Forms.ComboBox BoxMarcaFiltro;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
     }
 }
