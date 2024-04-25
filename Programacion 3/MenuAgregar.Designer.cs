@@ -46,6 +46,7 @@
             this.listBoxNombres = new System.Windows.Forms.ListBox();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.buttonDescartar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrecio)).BeginInit();
             this.SuspendLayout();
             // 
@@ -209,11 +210,21 @@
             this.buttonDescartar.Text = "Descartar";
             this.buttonDescartar.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(453, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "boton loco";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // MenuAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(529, 425);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonDescartar);
             this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.listBoxNombres);
@@ -234,6 +245,7 @@
             this.Name = "MenuAgregar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Articulo";
+            this.Load += new System.EventHandler(this.MenuAgregar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrecio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -260,5 +272,6 @@
         private System.Windows.Forms.ListBox listBoxNombres;
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.Button buttonDescartar;
+        private System.Windows.Forms.Button button1;
     }
 }

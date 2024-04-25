@@ -24,5 +24,10 @@ namespace Programacion_3
             string[] seleccion = buscarArchivo.FileNames;
             listBoxNombres.DataSource = seleccion;
         }
+
+        private void MenuAgregar_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

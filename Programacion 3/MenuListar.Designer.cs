@@ -262,6 +262,7 @@
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 31;
             this.label5.Text = "Nombre:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -272,6 +273,7 @@
             this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 33;
             this.label4.Text = "Marca:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -282,6 +284,7 @@
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 35;
             this.label3.Text = "Categoria:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // btnFiltrar
             // 
@@ -300,6 +303,7 @@
             this.txtFiltrarNombre.ReadOnly = true;
             this.txtFiltrarNombre.Size = new System.Drawing.Size(183, 20);
             this.txtFiltrarNombre.TabIndex = 39;
+            this.txtFiltrarNombre.TextChanged += new System.EventHandler(this.txtFiltrarNombre_TextChanged);
             // 
             // txtFiltrarMarca
             // 
@@ -308,6 +312,7 @@
             this.txtFiltrarMarca.ReadOnly = true;
             this.txtFiltrarMarca.Size = new System.Drawing.Size(183, 20);
             this.txtFiltrarMarca.TabIndex = 40;
+            this.txtFiltrarMarca.TextChanged += new System.EventHandler(this.txtFiltrarMarca_TextChanged);
             // 
             // textBox3
             // 
@@ -316,6 +321,7 @@
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(183, 20);
             this.textBox3.TabIndex = 41;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // MenuListar
             // 

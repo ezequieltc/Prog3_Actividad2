@@ -53,18 +53,6 @@
     <Compile Include="MenuAgregar.Designer.cs">
       <DependentUpon>MenuAgregar.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuEditar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MenuEditar.Designer.cs">
-      <DependentUpon>MenuEditar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MenuEliminar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MenuEliminar.Designer.cs">
-      <DependentUpon>MenuEliminar.cs</DependentUpon>
-    </Compile>
     <Compile Include="MenuListar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,12 +69,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MenuAgregar.resx">
       <DependentUpon>MenuAgregar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MenuEditar.resx">
-      <DependentUpon>MenuEditar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MenuEliminar.resx">
-      <DependentUpon>MenuEliminar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuListar.resx">
       <DependentUpon>MenuListar.cs</DependentUpon>
