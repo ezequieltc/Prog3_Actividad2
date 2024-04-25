@@ -47,8 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Articulo.cs" />
-    <Compile Include="ArticuloNegocio.cs" />
-    <Compile Include="Configs.cs" />
     <Compile Include="MenuAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +137,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\agregarIcono1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dominio\dominio.csproj">
+      <Project>{0EB59DCA-DF0B-4C00-ACD7-FF2ED6B1C737}</Project>
+      <Name>dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\nogocio\negocio.csproj">
+      <Project>{f52b5b27-60cc-4227-a827-a0299524c7f5}</Project>
+      <Name>negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,19 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using System.Windows.Forms;
+//using System.Windows.Forms;
+using Microsoft.SqlServer.Server;
+using dominio;
 
-namespace Programacion_3
+namespace negocio
 {
-    class ArticuloNegocio
+    public class ArticuloNegocio
     {
-
-            public List<Articulo> listarArticulos()
-        {
             List<Articulo> listado = new List<Articulo>();
             SqlConnection conexion = new SqlConnection();
             SqlCommand comando = new SqlCommand();
             SqlDataReader reader;
+
+
+            public List<Articulo> listarArticulos()
+        {
 
             try
             {
@@ -45,7 +48,7 @@ namespace Programacion_3
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al conectarse a la DB\nError: " + ex);
+               // MessageBox.Show("Error al conectarse a la DB\nError: " + ex);
                 throw ex;
             }
             finally
@@ -54,7 +57,25 @@ namespace Programacion_3
             }
         }
 
-        
+        public void insertar(Articulo articulo)
+        {
+            try
+            {
+                conexion.ConnectionString = "server=" + Configs.DbServer + "; database=" + Configs.Database + "; integrated security=" + Configs.SecurityIntegrated;
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = "INSERT INTO ARTICULOS VALUES (" + articulo.Codigo + "," + articulo.Nombre + "," + articulo.Descripcion + ")";
+
+                comando.ExecuteReader();
+                
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
+        }
 
     }
 }

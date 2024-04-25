@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Programacion_3
+namespace negocio
 {
-    class Configs
+    public class Configs
     {
         //Datos de conexion a la DDBB
         static public string DbServer { get { return ".\\"; } }
