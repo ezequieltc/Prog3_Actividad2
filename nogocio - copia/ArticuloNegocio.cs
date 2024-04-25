@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+//using System.Windows.Forms;
+using Microsoft.SqlServer.Server;
 using dominio;
 
 namespace negocio
@@ -11,12 +13,27 @@ namespace negocio
     public class ArticuloNegocio
     {
         List<Articulo> listado = new List<Articulo>();
+        //SqlConnection conexion = new SqlConnection();
+        //SqlCommand comando = new SqlCommand();
+        //SqlDataReader reader;
+        AccesoDatos datos;
+
 
         public List<Articulo> listarArticulos()
         {
-            AccesoDatos datos = new AccesoDatos();
+
             try
             {
+                //conexion.ConnectionString = "server=" + Configs.DbServer + "; database=" + Configs.Database + "; integrated security=" + Configs.SecurityIntegrated;
+                //comando.CommandType = System.Data.CommandType.Text;
+                //comando.CommandText = "SELECT Codigo, Nombre, Descripcion, Precio from ARTICULOS";
+                //comando.Connection = conexion;
+
+                //conexion.Open();
+
+                //reader = comando.ExecuteReader();
+
+                datos = new AccesoDatos();
                 datos.configurarConsulta("SELECT Codigo, Nombre, Descripcion, Precio from ARTICULOS");
                 datos.ejecutarConsulta();
 
@@ -36,31 +53,31 @@ namespace negocio
             }
             catch (Exception ex)
             {
+                // MessageBox.Show("Error al conectarse a la DB\nError: " + ex);
                 throw ex;
             }
             finally
             {
                 datos.cerrarConexion();
             }
-
         }
 
         public void insertar(Articulo articulo)
         {
-            AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.configurarConsulta("insert into ARTICULOS (Codigo,Nombre,Descripcion, precio) values('" + articulo.Codigo + "','" + articulo.Nombre + "','" + articulo.Descripcion + "', " + articulo.Precio + ")");
-                datos.ejecutarAccion();
+                //conexion.ConnectionString = "server=" + Configs.DbServer + "; database=" + Configs.Database + "; integrated security=" + Configs.SecurityIntegrated;
+                //comando.CommandType = System.Data.CommandType.Text;
+                //comando.CommandText = "INSERT INTO ARTICULOS VALUES (" + articulo.Codigo + "," + articulo.Nombre + "," + articulo.Descripcion + ")";
+
+                //comando.ExecuteReader();
+
+
             }
             catch (Exception ex)
             {
 
                 throw;
-            }
-            finally
-            {
-                datos.cerrarConexion();
             }
 
         }

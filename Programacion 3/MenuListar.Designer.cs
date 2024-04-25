@@ -298,7 +298,7 @@
             // 
             // txtFiltrarNombre
             // 
-            this.txtFiltrarNombre.Location = new System.Drawing.Point(67, 19);
+            this.txtFiltrarNombre.Location = new System.Drawing.Point(108, 19);
             this.txtFiltrarNombre.Name = "txtFiltrarNombre";
             this.txtFiltrarNombre.ReadOnly = true;
             this.txtFiltrarNombre.Size = new System.Drawing.Size(183, 20);

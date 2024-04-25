@@ -89,7 +89,7 @@
             this.buttonEditar.FlatAppearance.BorderSize = 3;
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.UseVisualStyleBackColor = true;
-            this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
+            //this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
             // 
             // buttonEliminar
             // 
@@ -98,7 +98,7 @@
             this.buttonEliminar.FlatAppearance.BorderSize = 3;
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
-            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
+            //this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
             // buttonListado
             // 
