@@ -67,11 +67,7 @@ namespace Programacion_3
 
         }
 
-        private void txtFiltrarMarca_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
