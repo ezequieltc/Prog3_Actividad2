@@ -16,7 +16,10 @@ namespace Programacion_3
 {
     public partial class MenuListar : Form
     {
-        
+        private List<Articulo> listaArticulos;
+        private List<Imagen> listaImagenes;
+        private List<Imagen> listaImagenesSelec = new List<Imagen>();
+        private int contadorImg = 1;
         public MenuListar()
         {
             InitializeComponent();
@@ -26,41 +29,38 @@ namespace Programacion_3
         private void MenuListar_Load(object sender, EventArgs e)
         {
             ArticuloNegocio load = new ArticuloNegocio();
-            
-            dgvArticulos.DataSource = load.listarArticulos();
+            listaArticulos = load.listarArticulos();
+            dgvArticulos.DataSource = listaArticulos;
             MarcaNegocio loadMarca = new MarcaNegocio();
             List<Marca> Marcas= loadMarca.listarMarcas();
             CategoriaNegocio loadCategoria = new CategoriaNegocio();
             List<Categoria> Categorias = loadCategoria.listarCategorias();
+            ImagenNegocio loadImagenes = new ImagenNegocio();
+            listaImagenes = loadImagenes.listarImagenes();
             comboBoxCategoria.DataSource = Categorias;
             comboBoxMarca.DataSource = Marcas;
         }
 
-        private void CambioTexto(object sender, EventArgs e)
-        {
-
-        }
 
         private void ClickEnCelda(object sender, DataGridViewCellEventArgs e)
         {
-            //Marca tmpmarca = new Marca();
-            //Categoria tmpCat = new Categoria();
-            //Articulo tmpArticulo = new Articulo();
-            DataGridViewRow filaSeleccionada = dgvArticulos.SelectedRows[0];
-            textBoxCodigo.Text = filaSeleccionada.Cells["Codigo"].Value.ToString();
-            //tmpArticulo.Codigo = filaSeleccionada.Cells["Codigo"].Value.ToString();
-            textBoxNombre.Text = filaSeleccionada.Cells["Nombre"].Value.ToString();
-            //tmpArticulo.Nombre = filaSeleccionada.Cells["Nombre"].Value.ToString();
-            textBoxDescripcion.Text = filaSeleccionada.Cells["Descripcion"].Value.ToString();
-            //tmpArticulo.Descripcion = filaSeleccionada.Cells["Descripcion"].Value.ToString();
-            numericUpDownPrecio.Value = decimal.Parse(filaSeleccionada.Cells["Precio"].Value.ToString());
-            //tmpArticulo.Precio = decimal.Parse(filaSeleccionada.Cells["Precio"].Value.ToString());
-            comboBoxMarca.Text = filaSeleccionada.Cells["Marca"].Value.ToString();
-            //tmpmarca.Descripcion = filaSeleccionada.Cells["Marca"].Value.ToString();
-            //tmpArticulo.Marca = tmpmarca;
-            comboBoxCategoria.Text = filaSeleccionada.Cells["Categoria"].Value.ToString();
-            //tmpArticulo.Categoria.Descripcion = filaSeleccionada.Cells["Categoria"].Value.ToString();
-
+            contadorImg = 1;
+            Articulo seleccion = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            listaImagenesSelec.Clear();
+            textBoxCodigo.Text = seleccion.Codigo;
+            textBoxNombre.Text = seleccion.Nombre;
+            textBoxDescripcion.Text = seleccion.Descripcion;
+            numericUpDownPrecio.Value = seleccion.Precio;
+            comboBoxMarca.Text = seleccion.Marca.ToString();
+            comboBoxCategoria.Text = seleccion.Categoria.ToString();
+            foreach(Imagen img in listaImagenes)
+            {
+                if (img.IdArticulo == seleccion.Id)
+                {
+                    listaImagenesSelec.Add(img);
+                }
+            }
+            cargarImagen(listaImagenesSelec[contadorImg-1].UrlImagen);
         }
 
         private void ModoEdicion(object sender, EventArgs e)
@@ -78,44 +78,61 @@ namespace Programacion_3
             comboBoxMarca.Enabled = checkBoxEstado.Checked;
         }
 
-        private void CambioMarcaFil(object sender, EventArgs e)
-        {
-            //    BoxMarcaFiltro.Items.Clear();
-            //    foreach (string marca in marcas)
-            //    {
-            //        if (marca.StartsWith(BoxMarcaFiltro.Text, StringComparison.CurrentCultureIgnoreCase))
-            //        {
-            //            BoxMarcaFiltro.Items.Add(marca);
-            //        }
-            //    }
-            //    BoxMarcaFiltro.SelectionStart = BoxMarcaFiltro.Text.Length;
-            //    BoxMarcaFiltro.SelectionLength = 0;
-        }
-
-        private void CambioCategoria(object sender, EventArgs e)
-        {
-        //    comboBoxCat.Items.Clear();
-        //    foreach (string categoria in categorias)
-        //    {
-        //        if (categoria.StartsWith(comboBoxCat.Text, StringComparison.CurrentCultureIgnoreCase))
-        //        {
-        //            comboBoxCat.Items.Add(categoria);
-        //        }
-        //        
-        //    }
-        //    comboBoxCat.SelectionLength = 0;
-        //    comboBoxCat.SelectionStart = comboBoxCat.Text.Length;
-        }
-
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
+            ArticuloNegocio artTmp = new ArticuloNegocio();
+            DataGridViewRow filaSeleccionada = dgvArticulos.SelectedRows[0];
             Articulo tmpArticulo = new Articulo();
+            tmpArticulo.Id = int.Parse(filaSeleccionada.Cells["Id"].Value.ToString());
+
             tmpArticulo.Codigo = textBoxCodigo.Text;
             tmpArticulo.Descripcion = textBoxDescripcion.Text;
             tmpArticulo.Nombre = textBoxNombre.Text;
             tmpArticulo.Marca = (Marca)comboBoxMarca.SelectedItem;
             tmpArticulo.Categoria = (Categoria)comboBoxCategoria.SelectedItem;
+            try
+            {
+                artTmp.actualizar(tmpArticulo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el articulo\n" + ex.ToString());
+            }
 
+
+        }
+
+        private void cargarImagen(string direccion)
+        {
+            try
+            {
+                pictureBoxItem.Load(direccion);
+            }
+            catch(Exception ex)
+            {
+                pictureBoxItem.Load("https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg");
+            }
+
+        }
+        private void buttonSiguienteImg_Click(object sender, EventArgs e)
+        {
+            if (contadorImg < listaImagenesSelec.Count())
+            {
+                contadorImg += 1;
+                labelImg.Text = contadorImg.ToString();
+                cargarImagen(listaImagenesSelec[contadorImg-1].UrlImagen);
+            }
+
+        }
+
+        private void buttonAnteriorImg_Click(object sender, EventArgs e)
+        {
+            if (contadorImg > 1)
+            {
+                contadorImg -= 1;
+                labelImg.Text = contadorImg.ToString();
+                cargarImagen(listaImagenesSelec[contadorImg - 1].UrlImagen);
+            }
         }
     }
 }

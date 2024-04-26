@@ -63,10 +63,15 @@
             this.label11 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.pictureBoxItem = new System.Windows.Forms.PictureBox();
+            this.buttonAnteriorImg = new System.Windows.Forms.Button();
+            this.buttonSiguienteImg = new System.Windows.Forms.Button();
+            this.labelImg = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItem)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvArticulos
@@ -126,7 +131,6 @@
             this.comboBoxCategoria.Name = "comboBoxCategoria";
             this.comboBoxCategoria.Size = new System.Drawing.Size(183, 21);
             this.comboBoxCategoria.TabIndex = 22;
-            this.comboBoxCategoria.SelectedValueChanged += new System.EventHandler(this.CambioTexto);
             // 
             // label2
             // 
@@ -364,7 +368,6 @@
             this.comboBoxCat.Name = "comboBoxCat";
             this.comboBoxCat.Size = new System.Drawing.Size(183, 21);
             this.comboBoxCat.TabIndex = 49;
-            this.comboBoxCat.TextChanged += new System.EventHandler(this.CambioCategoria);
             // 
             // BoxMarcaFiltro
             // 
@@ -373,7 +376,6 @@
             this.BoxMarcaFiltro.Name = "BoxMarcaFiltro";
             this.BoxMarcaFiltro.Size = new System.Drawing.Size(140, 21);
             this.BoxMarcaFiltro.TabIndex = 50;
-            this.BoxMarcaFiltro.TextChanged += new System.EventHandler(this.CambioMarcaFil);
             // 
             // label10
             // 
@@ -421,11 +423,54 @@
             this.numericUpDown2.Size = new System.Drawing.Size(112, 20);
             this.numericUpDown2.TabIndex = 54;
             // 
+            // pictureBoxItem
+            // 
+            this.pictureBoxItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxItem.Location = new System.Drawing.Point(486, 454);
+            this.pictureBoxItem.Name = "pictureBoxItem";
+            this.pictureBoxItem.Size = new System.Drawing.Size(271, 171);
+            this.pictureBoxItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxItem.TabIndex = 55;
+            this.pictureBoxItem.TabStop = false;
+            // 
+            // buttonAnteriorImg
+            // 
+            this.buttonAnteriorImg.Location = new System.Drawing.Point(504, 639);
+            this.buttonAnteriorImg.Name = "buttonAnteriorImg";
+            this.buttonAnteriorImg.Size = new System.Drawing.Size(49, 23);
+            this.buttonAnteriorImg.TabIndex = 56;
+            this.buttonAnteriorImg.Text = "<<";
+            this.buttonAnteriorImg.UseVisualStyleBackColor = true;
+            this.buttonAnteriorImg.Click += new System.EventHandler(this.buttonAnteriorImg_Click);
+            // 
+            // buttonSiguienteImg
+            // 
+            this.buttonSiguienteImg.Location = new System.Drawing.Point(698, 639);
+            this.buttonSiguienteImg.Name = "buttonSiguienteImg";
+            this.buttonSiguienteImg.Size = new System.Drawing.Size(49, 23);
+            this.buttonSiguienteImg.TabIndex = 57;
+            this.buttonSiguienteImg.Text = ">>";
+            this.buttonSiguienteImg.UseVisualStyleBackColor = true;
+            this.buttonSiguienteImg.Click += new System.EventHandler(this.buttonSiguienteImg_Click);
+            // 
+            // labelImg
+            // 
+            this.labelImg.AutoSize = true;
+            this.labelImg.Location = new System.Drawing.Point(619, 644);
+            this.labelImg.Name = "labelImg";
+            this.labelImg.Size = new System.Drawing.Size(13, 13);
+            this.labelImg.TabIndex = 58;
+            this.labelImg.Text = "1";
+            // 
             // MenuListar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 681);
+            this.Controls.Add(this.labelImg);
+            this.Controls.Add(this.buttonSiguienteImg);
+            this.Controls.Add(this.buttonAnteriorImg);
+            this.Controls.Add(this.pictureBoxItem);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label11);
@@ -469,6 +514,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrecio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -511,5 +557,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.PictureBox pictureBoxItem;
+        private System.Windows.Forms.Button buttonAnteriorImg;
+        private System.Windows.Forms.Button buttonSiguienteImg;
+        private System.Windows.Forms.Label labelImg;
     }
 }
