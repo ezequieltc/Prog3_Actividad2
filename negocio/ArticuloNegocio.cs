@@ -18,8 +18,7 @@ namespace negocio
             try
             {
                 datos.configurarConsulta("" +
-                    "SELECT ARTICULOS.Id as id_Art,Codigo, Nombre, Precio, ARTICULOS.Descripcion as descArt, MARCAS.Descripcion as descMarca, CATEGORIAS.Descripcion as descCat, MARCAS.Id as Id_Marca, CATEGORIAS.Id as Id_Categoria from ARTICULOS INNER JOIN MARCAS ON ARTICULOS.IdMarca = MARCAS.Id INNER JOIN CATEGORIAS ON ARTICULOS.Id = CATEGORIAS.Id"
-                    );
+                    "SELECT ARTICULOS.Id as id_Art,Codigo, Nombre, Precio, ARTICULOS.Descripcion as descArt, MARCAS.Descripcion as descMarca, CATEGORIAS.Descripcion as descCat, MARCAS.Id as Id_Marca, CATEGORIAS.Id as Id_Categoria from ARTICULOS INNER JOIN MARCAS ON ARTICULOS.IdMarca = MARCAS.Id INNER JOIN CATEGORIAS ON ARTICULOS.Id = CATEGORIAS.Id");
                 datos.ejecutarConsulta();
 
                 while (datos.Lector.Read())
@@ -62,6 +61,7 @@ namespace negocio
             try
             {
                 datos.configurarConsulta("insert into ARTICULOS (Codigo,Nombre,Descripcion, precio) values('" + articulo.Codigo + "','" + articulo.Nombre + "','" + articulo.Descripcion + "', " + articulo.Precio + ")");
+               
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

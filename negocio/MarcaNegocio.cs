@@ -24,7 +24,6 @@ namespace negocio
                     tmp.Id = (int)datos.Lector["Id"];
                     tmp.Descripcion = (string)datos.Lector["Descripcion"];
                     listado.Add(tmp);
-
                 }
                 datos.cerrarConexion();
                 return listado;
