@@ -75,6 +75,25 @@ namespace negocio
             }
 
         }
+
+        public void actualizar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.configurarConsulta("UPDATE ARTICULOS SET Codigo = '" + articulo.Codigo +"',Nombre = '" + articulo.Nombre + "',Descripcion = '" + articulo.Descripcion + "',IdMarca = " + articulo.Marca.Id + " ,IdCategoria = "+ articulo.Categoria.Id + ",Precio = " + articulo.Precio + " WHERE Id = " + articulo.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }
 
