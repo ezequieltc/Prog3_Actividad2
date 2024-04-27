@@ -317,12 +317,12 @@
             this.btnFiltrar.TabIndex = 38;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // txtFiltrarNombre
             // 
             this.txtFiltrarNombre.Location = new System.Drawing.Point(67, 35);
             this.txtFiltrarNombre.Name = "txtFiltrarNombre";
-            this.txtFiltrarNombre.ReadOnly = true;
             this.txtFiltrarNombre.Size = new System.Drawing.Size(159, 20);
             this.txtFiltrarNombre.TabIndex = 39;
             // 
@@ -340,7 +340,6 @@
             // 
             this.txtFiltroCodigo.Location = new System.Drawing.Point(297, 35);
             this.txtFiltroCodigo.Name = "txtFiltroCodigo";
-            this.txtFiltroCodigo.ReadOnly = true;
             this.txtFiltroCodigo.Size = new System.Drawing.Size(183, 20);
             this.txtFiltroCodigo.TabIndex = 43;
             // 
@@ -358,7 +357,6 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(67, 68);
             this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(159, 20);
             this.textBox1.TabIndex = 46;
             // 
@@ -498,6 +496,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(793, 24);
             this.menuStrip1.TabIndex = 61;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // archivoToolStripMenuItem
             // 
@@ -526,20 +525,20 @@
             // articuloToolStripMenuItem
             // 
             this.articuloToolStripMenuItem.Name = "articuloToolStripMenuItem";
-            this.articuloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.articuloToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.articuloToolStripMenuItem.Text = "Articulo";
             this.articuloToolStripMenuItem.Click += new System.EventHandler(this.articuloToolStripMenuItem_Click);
             // 
             // marcaToolStripMenuItem
             // 
             this.marcaToolStripMenuItem.Name = "marcaToolStripMenuItem";
-            this.marcaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.marcaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.marcaToolStripMenuItem.Text = "Marca";
             // 
             // categoriaToolStripMenuItem
             // 
             this.categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
-            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.categoriaToolStripMenuItem.Text = "Categoria";
             this.categoriaToolStripMenuItem.Click += new System.EventHandler(this.categoriaToolStripMenuItem_Click);
             // 
