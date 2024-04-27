@@ -45,8 +45,9 @@ namespace negocio
 
             try
             {
-                datos.configurarConsulta("insert into CATEGORIAS values('" + categoria + "')");
-                datos.ejecutarAccion();
+                datos.configurarConsulta("insert into CATEGORIAS values(@categoria)");
+                datos.setearParametros("@categoria", categoria);
+                datos.ejecutarAccionNoEscalar();
             }
             catch (Exception ex)
             {

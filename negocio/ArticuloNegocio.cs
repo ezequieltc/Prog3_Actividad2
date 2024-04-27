@@ -82,9 +82,16 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.configurarConsulta("UPDATE ARTICULOS SET Codigo = '" + articulo.Codigo +"',Nombre = '" + articulo.Nombre + "',Descripcion = '" + articulo.Descripcion + "',IdMarca = " + articulo.Marca.Id + " ,IdCategoria = "+ articulo.Categoria.Id + ",Precio = " + articulo.Precio + " WHERE Id = " + articulo.Id);
-                datos.ejecutarAccion();
-                Console.WriteLine("UPDATE ARTICULOS SET Codigo = '" + articulo.Codigo +"',Nombre = '" + articulo.Nombre + "',Descripcion = '" + articulo.Descripcion + "',IdMarca = " + articulo.Marca.Id + "' ,IdCategoria = " + articulo.Categoria.Id + ",Precio = " + articulo.Precio +" WHERE Id = " + articulo.Id);
+                datos.configurarConsulta("UPDATE ARTICULOS SET Codigo = @codigo ,Nombre = @nombre ,Descripcion = @descripcion ,IdMarca = @marca ,IdCategoria = @idCategoria ,Precio = @precio WHERE Id = @idArticulo");
+                datos.setearParametros("@codigo", articulo.Codigo);
+                datos.setearParametros("@nombre", articulo.Nombre);
+                datos.setearParametros("@descripcion", articulo.Descripcion);
+                datos.setearParametros("@marca", articulo.Marca);
+                datos.setearParametros("@idCategoria", articulo.Categoria.Id);
+                datos.setearParametros("@precio", articulo.Precio);
+                datos.setearParametros("@idArticulo", articulo.Id);
+                datos.ejecutarAccionNoEscalar();
+                
             }
             catch (Exception ex)
             {
