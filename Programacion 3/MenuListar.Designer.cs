@@ -67,6 +67,8 @@
             this.buttonAnteriorImg = new System.Windows.Forms.Button();
             this.buttonSiguienteImg = new System.Windows.Forms.Button();
             this.labelImg = new System.Windows.Forms.Label();
+            this.btnAgregarMarca = new System.Windows.Forms.Button();
+            this.btnAgregarCategoria = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -462,11 +464,38 @@
             this.labelImg.TabIndex = 58;
             this.labelImg.Text = "1";
             // 
+            // btnAgregarMarca
+            // 
+            this.btnAgregarMarca.AccessibleName = "btnAgregarMarca";
+            this.btnAgregarMarca.Location = new System.Drawing.Point(428, 493);
+            this.btnAgregarMarca.Name = "btnAgregarMarca";
+            this.btnAgregarMarca.Size = new System.Drawing.Size(52, 23);
+            this.btnAgregarMarca.TabIndex = 59;
+            this.btnAgregarMarca.Text = "Agregar";
+            this.btnAgregarMarca.UseCompatibleTextRendering = true;
+            this.btnAgregarMarca.UseVisualStyleBackColor = true;
+            this.btnAgregarMarca.TextChanged += new System.EventHandler(this.ModoEdicion);
+            this.btnAgregarMarca.Click += new System.EventHandler(this.btnAgregarMarca_Click);
+            // 
+            // btnAgregarCategoria
+            // 
+            this.btnAgregarCategoria.AccessibleName = "btnAgregarCategoria";
+            this.btnAgregarCategoria.Location = new System.Drawing.Point(428, 539);
+            this.btnAgregarCategoria.Name = "btnAgregarCategoria";
+            this.btnAgregarCategoria.Size = new System.Drawing.Size(52, 23);
+            this.btnAgregarCategoria.TabIndex = 60;
+            this.btnAgregarCategoria.Text = "Agregar";
+            this.btnAgregarCategoria.UseCompatibleTextRendering = true;
+            this.btnAgregarCategoria.UseVisualStyleBackColor = true;
+            this.btnAgregarCategoria.Click += new System.EventHandler(this.btnAgregarCategoria_Click);
+            // 
             // MenuListar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 681);
+            this.Controls.Add(this.btnAgregarCategoria);
+            this.Controls.Add(this.btnAgregarMarca);
             this.Controls.Add(this.labelImg);
             this.Controls.Add(this.buttonSiguienteImg);
             this.Controls.Add(this.buttonAnteriorImg);
@@ -561,5 +590,7 @@
         private System.Windows.Forms.Button buttonAnteriorImg;
         private System.Windows.Forms.Button buttonSiguienteImg;
         private System.Windows.Forms.Label labelImg;
+        private System.Windows.Forms.Button btnAgregarMarca;
+        private System.Windows.Forms.Button btnAgregarCategoria;
     }
 }

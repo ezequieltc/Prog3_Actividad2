@@ -19,6 +19,8 @@ namespace Programacion_3
         private List<Articulo> listaArticulos;
         private List<Imagen> listaImagenes;
         private List<Imagen> listaImagenesSelec = new List<Imagen>();
+        private List<Marca> Marcas = new List<Marca>();
+        private List<Categoria> Categorias = new List<Categoria>();
         private int contadorImg = 1;
         public MenuListar()
         {
@@ -32,9 +34,9 @@ namespace Programacion_3
             listaArticulos = load.listarArticulos();
             dgvArticulos.DataSource = listaArticulos;
             MarcaNegocio loadMarca = new MarcaNegocio();
-            List<Marca> Marcas= loadMarca.listarMarcas();
+            Marcas= loadMarca.listarMarcas();
             CategoriaNegocio loadCategoria = new CategoriaNegocio();
-            List<Categoria> Categorias = loadCategoria.listarCategorias();
+            Categorias = loadCategoria.listarCategorias();
             ImagenNegocio loadImagenes = new ImagenNegocio();
             listaImagenes = loadImagenes.listarImagenes();
             comboBoxCategoria.DataSource = Categorias;
@@ -65,6 +67,7 @@ namespace Programacion_3
 
         private void ModoEdicion(object sender, EventArgs e)
         {
+            
             buttonGuardar.Enabled = checkBoxEstado.Checked;
             buttonEliminar.Enabled = checkBoxEstado.Checked;
             textBoxCodigo.ReadOnly = !checkBoxEstado.Checked;
@@ -93,6 +96,8 @@ namespace Programacion_3
             try
             {
                 artTmp.actualizar(tmpArticulo);
+                dgvArticulos.DataSource = artTmp.listarArticulos();
+                
             }
             catch (Exception ex)
             {
@@ -133,6 +138,71 @@ namespace Programacion_3
                 contadorImg -= 1;
                 labelImg.Text = contadorImg.ToString();
                 cargarImagen(listaImagenesSelec[contadorImg - 1].UrlImagen);
+            }
+        }
+
+        private void btnAgregarMarca_Click(object sender, EventArgs e)
+        {
+            string seleccion = comboBoxMarca.Text;
+            bool nuevo = true;
+            foreach(Marca marca in Marcas)
+            {
+                if (marca.Descripcion.Equals(seleccion))
+                {
+                    nuevo = false;
+                }
+            }
+            if (nuevo) 
+            { 
+                Console.WriteLine("Marca nueva - " + seleccion);
+                DialogResult result =  MessageBox.Show("Desea agregar la marca " + seleccion + "?", "Agregar Marca" ,MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    try
+                    {
+                        MarcaNegocio tmpMarca = new MarcaNegocio();
+                        tmpMarca.agregar(seleccion);
+                        Marcas = tmpMarca.listarMarcas();
+                        comboBoxMarca.DataSource = Marcas;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al insertar nueva Marca\n" + ex.ToString(), "Error");
+                    }
+                }
+            }
+        }
+
+        private void btnAgregarCategoria_Click(object sender, EventArgs e)
+        {
+            string seleccion = comboBoxCategoria.Text;
+            bool nuevo = true;
+            foreach (Categoria categoria in Categorias)
+            {
+                if (categoria.Descripcion.Equals(seleccion))
+                {
+                    nuevo = false;
+                }
+            }
+            if (nuevo)
+            {
+                DialogResult result = MessageBox.Show("Desea agregar la categoria " + seleccion + "?", "Agregar Categoria", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    try
+                    {
+                        CategoriaNegocio tmpCateforia = new CategoriaNegocio();
+                        tmpCateforia.agregar(seleccion);
+                        Categorias = tmpCateforia.listarCategorias();
+                        comboBoxCategoria.DataSource = Categorias;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al insertar nueva Categoria\n" + ex.ToString(), "Error");
+                    }
+                }
             }
         }
     }

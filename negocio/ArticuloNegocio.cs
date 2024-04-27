@@ -18,7 +18,7 @@ namespace negocio
             try
             {
                 datos.configurarConsulta("" +
-                    "SELECT ARTICULOS.Id as id_Art,Codigo, Nombre, Precio, ARTICULOS.Descripcion as descArt, MARCAS.Descripcion as descMarca, CATEGORIAS.Descripcion as descCat, MARCAS.Id as Id_Marca, CATEGORIAS.Id as Id_Categoria from ARTICULOS INNER JOIN MARCAS ON ARTICULOS.IdMarca = MARCAS.Id INNER JOIN CATEGORIAS ON ARTICULOS.Id = CATEGORIAS.Id");
+                    "SELECT ARTICULOS.Id as id_Art,Codigo, Nombre, Precio, ARTICULOS.Descripcion as descArt, MARCAS.Descripcion as descMarca, CATEGORIAS.Descripcion as descCat, MARCAS.Id as Id_Marca, CATEGORIAS.Id as Id_Categoria from ARTICULOS INNER JOIN MARCAS ON ARTICULOS.IdMarca = MARCAS.Id INNER JOIN CATEGORIAS ON ARTICULOS.IdCategoria = CATEGORIAS.Id");
                 datos.ejecutarConsulta();
 
                 while (datos.Lector.Read())
@@ -83,6 +83,7 @@ namespace negocio
             {
                 datos.configurarConsulta("UPDATE ARTICULOS SET Codigo = '" + articulo.Codigo +"',Nombre = '" + articulo.Nombre + "',Descripcion = '" + articulo.Descripcion + "',IdMarca = " + articulo.Marca.Id + " ,IdCategoria = "+ articulo.Categoria.Id + ",Precio = " + articulo.Precio + " WHERE Id = " + articulo.Id);
                 datos.ejecutarAccion();
+                Console.WriteLine("UPDATE ARTICULOS SET Codigo = '" + articulo.Codigo +"',Nombre = '" + articulo.Nombre + "',Descripcion = '" + articulo.Descripcion + "',IdMarca = " + articulo.Marca.Id + "' ,IdCategoria = " + articulo.Categoria.Id + ",Precio = " + articulo.Precio +" WHERE Id = " + articulo.Id);
             }
             catch (Exception ex)
             {
