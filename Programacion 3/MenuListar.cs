@@ -93,6 +93,7 @@ namespace Programacion_3
             tmpArticulo.Nombre = textBoxNombre.Text;
             tmpArticulo.Marca = (Marca)comboBoxMarca.SelectedItem;
             tmpArticulo.Categoria = (Categoria)comboBoxCategoria.SelectedItem;
+            tmpArticulo.Precio = numericUpDownPrecio.Value;
             try
             {
                 artTmp.actualizar(tmpArticulo);
