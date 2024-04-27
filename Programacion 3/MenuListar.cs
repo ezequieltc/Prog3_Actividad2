@@ -222,5 +222,19 @@ namespace Programacion_3
             menuAgregar.Show();
         }
 
+        private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form ventana in Application.OpenForms)
+            {
+                if (ventana.GetType() == typeof(MenuCategoria))
+                {
+                    ventana.BringToFront();
+                    return;
+                }
+
+            }
+            MenuCategoria menuCategoria = new MenuCategoria();
+            menuCategoria.Show();
+        }
     }
 }
