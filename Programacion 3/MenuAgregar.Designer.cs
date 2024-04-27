@@ -46,8 +46,10 @@
             this.listBoxNombres = new System.Windows.Forms.ListBox();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.buttonDescartar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.labelImagen = new System.Windows.Forms.Label();
+            this.pictureBoxImagen = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrecio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -172,25 +174,27 @@
             // 
             // buscarArchivo
             // 
+            this.buscarArchivo.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*";
             this.buscarArchivo.Multiselect = true;
             // 
             // buttonAgregarImagen
             // 
-            this.buttonAgregarImagen.Location = new System.Drawing.Point(245, 59);
+            this.buttonAgregarImagen.Location = new System.Drawing.Point(245, 52);
             this.buttonAgregarImagen.Name = "buttonAgregarImagen";
             this.buttonAgregarImagen.Size = new System.Drawing.Size(120, 23);
             this.buttonAgregarImagen.TabIndex = 13;
             this.buttonAgregarImagen.Text = "Agregar Imagen";
             this.buttonAgregarImagen.UseVisualStyleBackColor = true;
-            this.buttonAgregarImagen.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAgregarImagen.Click += new System.EventHandler(this.buttonAgregarImagen_Click);
             // 
             // listBoxNombres
             // 
             this.listBoxNombres.FormattingEnabled = true;
-            this.listBoxNombres.Location = new System.Drawing.Point(245, 111);
+            this.listBoxNombres.Location = new System.Drawing.Point(245, 83);
             this.listBoxNombres.Name = "listBoxNombres";
-            this.listBoxNombres.Size = new System.Drawing.Size(259, 238);
+            this.listBoxNombres.Size = new System.Drawing.Size(200, 82);
             this.listBoxNombres.TabIndex = 14;
+            this.listBoxNombres.SelectedIndexChanged += new System.EventHandler(this.CambioItem);
             // 
             // buttonGuardar
             // 
@@ -200,6 +204,7 @@
             this.buttonGuardar.TabIndex = 15;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = true;
+            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // buttonDescartar
             // 
@@ -209,22 +214,33 @@
             this.buttonDescartar.TabIndex = 16;
             this.buttonDescartar.Text = "Descartar";
             this.buttonDescartar.UseVisualStyleBackColor = true;
+            this.buttonDescartar.Click += new System.EventHandler(this.buttonDescartar_Click);
             // 
-            // button1
+            // labelImagen
             // 
-            this.button1.Location = new System.Drawing.Point(453, 31);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "boton loco";
-            this.button1.UseVisualStyleBackColor = true;
+            this.labelImagen.AutoSize = true;
+            this.labelImagen.Location = new System.Drawing.Point(242, 177);
+            this.labelImagen.Name = "labelImagen";
+            this.labelImagen.Size = new System.Drawing.Size(45, 13);
+            this.labelImagen.TabIndex = 17;
+            this.labelImagen.Text = "Imagen:";
+            // 
+            // pictureBoxImagen
+            // 
+            this.pictureBoxImagen.Location = new System.Drawing.Point(245, 201);
+            this.pictureBoxImagen.Name = "pictureBoxImagen";
+            this.pictureBoxImagen.Size = new System.Drawing.Size(200, 159);
+            this.pictureBoxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxImagen.TabIndex = 18;
+            this.pictureBoxImagen.TabStop = false;
             // 
             // MenuAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 425);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(479, 425);
+            this.Controls.Add(this.pictureBoxImagen);
+            this.Controls.Add(this.labelImagen);
             this.Controls.Add(this.buttonDescartar);
             this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.listBoxNombres);
@@ -247,6 +263,7 @@
             this.Text = "Agregar Articulo";
             this.Load += new System.EventHandler(this.MenuAgregar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrecio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,6 +289,7 @@
         private System.Windows.Forms.ListBox listBoxNombres;
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.Button buttonDescartar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelImagen;
+        private System.Windows.Forms.PictureBox pictureBoxImagen;
     }
 }

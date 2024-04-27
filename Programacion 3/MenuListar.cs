@@ -116,7 +116,7 @@ namespace Programacion_3
               }
             catch(Exception ex)
             {
-                pictureBoxItem.Load("https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg");
+                pictureBoxItem.Image = Properties.Resources.noImage;
             }
 
         }
@@ -205,5 +205,21 @@ namespace Programacion_3
                 }
             }
         }
+
+        private void articuloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach(Form ventana in Application.OpenForms)
+            {
+                if (ventana.GetType() == typeof(MenuAgregar))
+                {
+                    ventana.BringToFront();
+                    return;
+                }
+
+            }
+            MenuAgregar menuAgregar = new MenuAgregar();
+            menuAgregar.Show();
+        }
+
     }
 }

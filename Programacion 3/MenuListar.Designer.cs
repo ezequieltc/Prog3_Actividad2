@@ -63,16 +63,24 @@
             this.label11 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.pictureBoxItem = new System.Windows.Forms.PictureBox();
             this.buttonAnteriorImg = new System.Windows.Forms.Button();
             this.buttonSiguienteImg = new System.Windows.Forms.Button();
             this.labelImg = new System.Windows.Forms.Label();
             this.btnAgregarMarca = new System.Windows.Forms.Button();
             this.btnAgregarCategoria = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.articuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxItem = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItem)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,7 +89,8 @@
             this.dgvArticulos.AllowUserToAddRows = false;
             this.dgvArticulos.AllowUserToDeleteRows = false;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.Location = new System.Drawing.Point(12, 102);
+            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvArticulos.Location = new System.Drawing.Point(12, 129);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.ReadOnly = true;
@@ -95,7 +104,7 @@
             // 
             this.labelDetalles.AutoSize = true;
             this.labelDetalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDetalles.Location = new System.Drawing.Point(12, 444);
+            this.labelDetalles.Location = new System.Drawing.Point(12, 483);
             this.labelDetalles.Name = "labelDetalles";
             this.labelDetalles.Size = new System.Drawing.Size(96, 25);
             this.labelDetalles.TabIndex = 1;
@@ -104,7 +113,7 @@
             // numericUpDownPrecio
             // 
             this.numericUpDownPrecio.DecimalPlaces = 2;
-            this.numericUpDownPrecio.Location = new System.Drawing.Point(239, 591);
+            this.numericUpDownPrecio.Location = new System.Drawing.Point(239, 630);
             this.numericUpDownPrecio.Maximum = new decimal(new int[] {
             276447232,
             23283,
@@ -119,7 +128,7 @@
             // 
             this.labelPrecio.AutoSize = true;
             this.labelPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPrecio.Location = new System.Drawing.Point(236, 574);
+            this.labelPrecio.Location = new System.Drawing.Point(236, 613);
             this.labelPrecio.Name = "labelPrecio";
             this.labelPrecio.Size = new System.Drawing.Size(40, 13);
             this.labelPrecio.TabIndex = 23;
@@ -129,7 +138,7 @@
             // 
             this.comboBoxCategoria.Enabled = false;
             this.comboBoxCategoria.FormattingEnabled = true;
-            this.comboBoxCategoria.Location = new System.Drawing.Point(239, 539);
+            this.comboBoxCategoria.Location = new System.Drawing.Point(239, 578);
             this.comboBoxCategoria.Name = "comboBoxCategoria";
             this.comboBoxCategoria.Size = new System.Drawing.Size(183, 21);
             this.comboBoxCategoria.TabIndex = 22;
@@ -138,7 +147,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(236, 522);
+            this.label2.Location = new System.Drawing.Point(236, 561);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 21;
@@ -148,7 +157,7 @@
             // 
             this.comboBoxMarca.Enabled = false;
             this.comboBoxMarca.FormattingEnabled = true;
-            this.comboBoxMarca.Location = new System.Drawing.Point(239, 493);
+            this.comboBoxMarca.Location = new System.Drawing.Point(239, 532);
             this.comboBoxMarca.Name = "comboBoxMarca";
             this.comboBoxMarca.Size = new System.Drawing.Size(183, 21);
             this.comboBoxMarca.TabIndex = 20;
@@ -157,7 +166,7 @@
             // 
             this.labelMarca.AutoSize = true;
             this.labelMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMarca.Location = new System.Drawing.Point(236, 476);
+            this.labelMarca.Location = new System.Drawing.Point(236, 515);
             this.labelMarca.Name = "labelMarca";
             this.labelMarca.Size = new System.Drawing.Size(40, 13);
             this.labelMarca.TabIndex = 19;
@@ -166,7 +175,7 @@
             // textBoxDescripcion
             // 
             this.textBoxDescripcion.Enabled = false;
-            this.textBoxDescripcion.Location = new System.Drawing.Point(17, 595);
+            this.textBoxDescripcion.Location = new System.Drawing.Point(17, 634);
             this.textBoxDescripcion.Name = "textBoxDescripcion";
             this.textBoxDescripcion.ReadOnly = true;
             this.textBoxDescripcion.Size = new System.Drawing.Size(183, 20);
@@ -176,7 +185,7 @@
             // 
             this.labelDescripcion.AutoSize = true;
             this.labelDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDescripcion.Location = new System.Drawing.Point(14, 579);
+            this.labelDescripcion.Location = new System.Drawing.Point(14, 618);
             this.labelDescripcion.Name = "labelDescripcion";
             this.labelDescripcion.Size = new System.Drawing.Size(66, 13);
             this.labelDescripcion.TabIndex = 17;
@@ -185,7 +194,7 @@
             // textBoxNombre
             // 
             this.textBoxNombre.Enabled = false;
-            this.textBoxNombre.Location = new System.Drawing.Point(17, 545);
+            this.textBoxNombre.Location = new System.Drawing.Point(17, 584);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.ReadOnly = true;
             this.textBoxNombre.Size = new System.Drawing.Size(183, 20);
@@ -195,7 +204,7 @@
             // 
             this.labelNombre.AutoSize = true;
             this.labelNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNombre.Location = new System.Drawing.Point(14, 529);
+            this.labelNombre.Location = new System.Drawing.Point(14, 568);
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(47, 13);
             this.labelNombre.TabIndex = 15;
@@ -204,7 +213,7 @@
             // textBoxCodigo
             // 
             this.textBoxCodigo.Enabled = false;
-            this.textBoxCodigo.Location = new System.Drawing.Point(17, 493);
+            this.textBoxCodigo.Location = new System.Drawing.Point(17, 532);
             this.textBoxCodigo.Name = "textBoxCodigo";
             this.textBoxCodigo.ReadOnly = true;
             this.textBoxCodigo.Size = new System.Drawing.Size(183, 20);
@@ -214,7 +223,7 @@
             // 
             this.labelCodigo.AutoSize = true;
             this.labelCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCodigo.Location = new System.Drawing.Point(14, 477);
+            this.labelCodigo.Location = new System.Drawing.Point(14, 516);
             this.labelCodigo.Name = "labelCodigo";
             this.labelCodigo.Size = new System.Drawing.Size(43, 13);
             this.labelCodigo.TabIndex = 13;
@@ -223,7 +232,7 @@
             // buttonGuardar
             // 
             this.buttonGuardar.Enabled = false;
-            this.buttonGuardar.Location = new System.Drawing.Point(17, 641);
+            this.buttonGuardar.Location = new System.Drawing.Point(17, 680);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(75, 23);
             this.buttonGuardar.TabIndex = 25;
@@ -234,7 +243,7 @@
             // buttonEliminar
             // 
             this.buttonEliminar.Enabled = false;
-            this.buttonEliminar.Location = new System.Drawing.Point(98, 641);
+            this.buttonEliminar.Location = new System.Drawing.Point(98, 680);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
             this.buttonEliminar.TabIndex = 26;
@@ -244,7 +253,7 @@
             // checkBoxEstado
             // 
             this.checkBoxEstado.AutoSize = true;
-            this.checkBoxEstado.Location = new System.Drawing.Point(211, 645);
+            this.checkBoxEstado.Location = new System.Drawing.Point(211, 684);
             this.checkBoxEstado.Name = "checkBoxEstado";
             this.checkBoxEstado.Size = new System.Drawing.Size(91, 17);
             this.checkBoxEstado.TabIndex = 27;
@@ -256,7 +265,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(257, 139);
+            this.label1.Location = new System.Drawing.Point(257, 162);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 37;
@@ -265,7 +274,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(18, 19);
+            this.label6.Location = new System.Drawing.Point(18, 42);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 13);
             this.label6.TabIndex = 29;
@@ -274,7 +283,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(14, 19);
+            this.label5.Location = new System.Drawing.Point(14, 42);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 31;
@@ -284,7 +293,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(501, 16);
+            this.label4.Location = new System.Drawing.Point(501, 39);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 33;
@@ -294,7 +303,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(236, 48);
+            this.label3.Location = new System.Drawing.Point(236, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 35;
@@ -302,7 +311,7 @@
             // 
             // btnFiltrar
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(718, 20);
+            this.btnFiltrar.Location = new System.Drawing.Point(718, 43);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(59, 51);
             this.btnFiltrar.TabIndex = 38;
@@ -311,7 +320,7 @@
             // 
             // txtFiltrarNombre
             // 
-            this.txtFiltrarNombre.Location = new System.Drawing.Point(67, 12);
+            this.txtFiltrarNombre.Location = new System.Drawing.Point(67, 35);
             this.txtFiltrarNombre.Name = "txtFiltrarNombre";
             this.txtFiltrarNombre.ReadOnly = true;
             this.txtFiltrarNombre.Size = new System.Drawing.Size(159, 20);
@@ -321,7 +330,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(248, 15);
+            this.label7.Location = new System.Drawing.Point(248, 38);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 42;
@@ -329,7 +338,7 @@
             // 
             // txtFiltroCodigo
             // 
-            this.txtFiltroCodigo.Location = new System.Drawing.Point(297, 12);
+            this.txtFiltroCodigo.Location = new System.Drawing.Point(297, 35);
             this.txtFiltroCodigo.Name = "txtFiltroCodigo";
             this.txtFiltroCodigo.ReadOnly = true;
             this.txtFiltroCodigo.Size = new System.Drawing.Size(183, 20);
@@ -339,7 +348,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(18, 52);
+            this.label8.Location = new System.Drawing.Point(18, 75);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 45;
@@ -347,7 +356,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(67, 45);
+            this.textBox1.Location = new System.Drawing.Point(67, 68);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(159, 20);
@@ -357,7 +366,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(501, 48);
+            this.label9.Location = new System.Drawing.Point(501, 71);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 13);
             this.label9.TabIndex = 47;
@@ -366,7 +375,7 @@
             // comboBoxCat
             // 
             this.comboBoxCat.FormattingEnabled = true;
-            this.comboBoxCat.Location = new System.Drawing.Point(297, 48);
+            this.comboBoxCat.Location = new System.Drawing.Point(297, 71);
             this.comboBoxCat.Name = "comboBoxCat";
             this.comboBoxCat.Size = new System.Drawing.Size(183, 21);
             this.comboBoxCat.TabIndex = 49;
@@ -374,7 +383,7 @@
             // BoxMarcaFiltro
             // 
             this.BoxMarcaFiltro.FormattingEnabled = true;
-            this.BoxMarcaFiltro.Location = new System.Drawing.Point(547, 13);
+            this.BoxMarcaFiltro.Location = new System.Drawing.Point(547, 36);
             this.BoxMarcaFiltro.Name = "BoxMarcaFiltro";
             this.BoxMarcaFiltro.Size = new System.Drawing.Size(140, 21);
             this.BoxMarcaFiltro.TabIndex = 50;
@@ -383,7 +392,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(544, 48);
+            this.label10.Location = new System.Drawing.Point(544, 71);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(24, 13);
             this.label10.TabIndex = 51;
@@ -393,7 +402,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(530, 68);
+            this.label11.Location = new System.Drawing.Point(530, 91);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 13);
             this.label11.TabIndex = 52;
@@ -402,7 +411,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Location = new System.Drawing.Point(575, 42);
+            this.numericUpDown1.Location = new System.Drawing.Point(575, 65);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             276447231,
             23283,
@@ -415,7 +424,7 @@
             // numericUpDown2
             // 
             this.numericUpDown2.DecimalPlaces = 2;
-            this.numericUpDown2.Location = new System.Drawing.Point(575, 70);
+            this.numericUpDown2.Location = new System.Drawing.Point(575, 93);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             276447231,
             23283,
@@ -425,19 +434,9 @@
             this.numericUpDown2.Size = new System.Drawing.Size(112, 20);
             this.numericUpDown2.TabIndex = 54;
             // 
-            // pictureBoxItem
-            // 
-            this.pictureBoxItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxItem.Location = new System.Drawing.Point(486, 454);
-            this.pictureBoxItem.Name = "pictureBoxItem";
-            this.pictureBoxItem.Size = new System.Drawing.Size(271, 171);
-            this.pictureBoxItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxItem.TabIndex = 55;
-            this.pictureBoxItem.TabStop = false;
-            // 
             // buttonAnteriorImg
             // 
-            this.buttonAnteriorImg.Location = new System.Drawing.Point(504, 639);
+            this.buttonAnteriorImg.Location = new System.Drawing.Point(504, 678);
             this.buttonAnteriorImg.Name = "buttonAnteriorImg";
             this.buttonAnteriorImg.Size = new System.Drawing.Size(49, 23);
             this.buttonAnteriorImg.TabIndex = 56;
@@ -447,7 +446,7 @@
             // 
             // buttonSiguienteImg
             // 
-            this.buttonSiguienteImg.Location = new System.Drawing.Point(698, 639);
+            this.buttonSiguienteImg.Location = new System.Drawing.Point(698, 678);
             this.buttonSiguienteImg.Name = "buttonSiguienteImg";
             this.buttonSiguienteImg.Size = new System.Drawing.Size(49, 23);
             this.buttonSiguienteImg.TabIndex = 57;
@@ -458,7 +457,7 @@
             // labelImg
             // 
             this.labelImg.AutoSize = true;
-            this.labelImg.Location = new System.Drawing.Point(619, 644);
+            this.labelImg.Location = new System.Drawing.Point(619, 683);
             this.labelImg.Name = "labelImg";
             this.labelImg.Size = new System.Drawing.Size(13, 13);
             this.labelImg.TabIndex = 58;
@@ -467,7 +466,7 @@
             // btnAgregarMarca
             // 
             this.btnAgregarMarca.AccessibleName = "btnAgregarMarca";
-            this.btnAgregarMarca.Location = new System.Drawing.Point(428, 493);
+            this.btnAgregarMarca.Location = new System.Drawing.Point(428, 532);
             this.btnAgregarMarca.Name = "btnAgregarMarca";
             this.btnAgregarMarca.Size = new System.Drawing.Size(52, 23);
             this.btnAgregarMarca.TabIndex = 59;
@@ -480,7 +479,7 @@
             // btnAgregarCategoria
             // 
             this.btnAgregarCategoria.AccessibleName = "btnAgregarCategoria";
-            this.btnAgregarCategoria.Location = new System.Drawing.Point(428, 539);
+            this.btnAgregarCategoria.Location = new System.Drawing.Point(428, 578);
             this.btnAgregarCategoria.Name = "btnAgregarCategoria";
             this.btnAgregarCategoria.Size = new System.Drawing.Size(52, 23);
             this.btnAgregarCategoria.TabIndex = 60;
@@ -489,11 +488,75 @@
             this.btnAgregarCategoria.UseVisualStyleBackColor = true;
             this.btnAgregarCategoria.Click += new System.EventHandler(this.btnAgregarCategoria_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.archivoToolStripMenuItem,
+            this.agregarToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(793, 24);
+            this.menuStrip1.TabIndex = 61;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // archivoToolStripMenuItem
+            // 
+            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.salirToolStripMenuItem});
+            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.archivoToolStripMenuItem.Text = "Archivo";
+            // 
+            // agregarToolStripMenuItem
+            // 
+            this.agregarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.articuloToolStripMenuItem,
+            this.marcaToolStripMenuItem,
+            this.categoriaToolStripMenuItem});
+            this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
+            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.agregarToolStripMenuItem.Text = "Agregar";
+            // 
+            // articuloToolStripMenuItem
+            // 
+            this.articuloToolStripMenuItem.Name = "articuloToolStripMenuItem";
+            this.articuloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.articuloToolStripMenuItem.Text = "Articulo";
+            this.articuloToolStripMenuItem.Click += new System.EventHandler(this.articuloToolStripMenuItem_Click);
+            // 
+            // marcaToolStripMenuItem
+            // 
+            this.marcaToolStripMenuItem.Name = "marcaToolStripMenuItem";
+            this.marcaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.marcaToolStripMenuItem.Text = "Marca";
+            // 
+            // categoriaToolStripMenuItem
+            // 
+            this.categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
+            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriaToolStripMenuItem.Text = "Categoria";
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.salirToolStripMenuItem.Text = "Salir";
+            // 
+            // pictureBoxItem
+            // 
+            this.pictureBoxItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxItem.Location = new System.Drawing.Point(486, 493);
+            this.pictureBoxItem.Name = "pictureBoxItem";
+            this.pictureBoxItem.Size = new System.Drawing.Size(271, 171);
+            this.pictureBoxItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxItem.TabIndex = 55;
+            this.pictureBoxItem.TabStop = false;
+            // 
             // MenuListar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(793, 681);
+            this.ClientSize = new System.Drawing.Size(793, 721);
             this.Controls.Add(this.btnAgregarCategoria);
             this.Controls.Add(this.btnAgregarMarca);
             this.Controls.Add(this.labelImg);
@@ -535,6 +598,8 @@
             this.Controls.Add(this.labelCodigo);
             this.Controls.Add(this.labelDetalles);
             this.Controls.Add(this.dgvArticulos);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MenuListar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listado de Articulos";
@@ -543,6 +608,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrecio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxItem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -586,11 +653,18 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.PictureBox pictureBoxItem;
         private System.Windows.Forms.Button buttonAnteriorImg;
         private System.Windows.Forms.Button buttonSiguienteImg;
         private System.Windows.Forms.Label labelImg;
         private System.Windows.Forms.Button btnAgregarMarca;
         private System.Windows.Forms.Button btnAgregarCategoria;
+        private System.Windows.Forms.PictureBox pictureBoxItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem agregarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem articuloToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem marcaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem;
     }
 }

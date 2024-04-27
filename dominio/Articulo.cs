@@ -8,6 +8,7 @@ namespace dominio
 {
     public class Articulo
     {
+        private decimal _precio;
         public int Id {  get; set; }
         public string Codigo { get; set; }
 
@@ -15,7 +16,7 @@ namespace dominio
 
         public string Descripcion { get; set; }
 
-        public decimal Precio { get; set; }
+        public decimal Precio { get { return _precio; } set { _precio = decimal.Round(value, 2); } }
 
         public Marca Marca { get; set; }
 

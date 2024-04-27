@@ -41,5 +41,32 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void insertar(List<string> imagenes, int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                foreach (string img in imagenes)
+                {
+                    datos.configurarConsulta("insert into IMAGENES (IdArticulo, ImagenUrl) OUTPUT INSERTED.ID values ('" + id + "','" + img + "')");
+                    datos.ejecutarAccion();
+                    datos.cerrarConexion();
+
+                }
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }
