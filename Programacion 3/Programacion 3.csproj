@@ -129,5 +129,11 @@
       <Name>negocio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noImagen.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noImage.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

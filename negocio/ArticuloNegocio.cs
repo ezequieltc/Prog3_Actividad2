@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using dominio;
+using System.Runtime.CompilerServices;
 
 namespace negocio
 {
@@ -37,10 +38,8 @@ namespace negocio
                     tmpCat.Descripcion = (string)datos.Lector["descCat"];
                     tmpCat.Id = (int)datos.Lector["Id_Categoria"];
                     tmp.Categoria = tmpCat;
-
                     listado.Add(tmp);
                 }
-                datos.cerrarConexion();
                 return listado;
 
             }
@@ -55,19 +54,21 @@ namespace negocio
 
         }
 
-        public void insertar(Articulo articulo)
+        public int insertar(Articulo articulo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.configurarConsulta("insert into ARTICULOS (Codigo,Nombre,Descripcion, precio) values('" + articulo.Codigo + "','" + articulo.Nombre + "','" + articulo.Descripcion + "', " + articulo.Precio + ")");
-               
-                datos.ejecutarAccion();
+                datos.configurarConsulta("insert into ARTICULOS (Codigo,Nombre,Descripcion, Precio, IdMarca, IdCategoria) OUTPUT INSERTED.ID values('" + articulo.Codigo + "','" + articulo.Nombre + "','" + articulo.Descripcion + "','" + articulo.Precio + "','" + articulo.Marca.Id + "','" + articulo.Categoria.Id + "')");
+                int id = datos.ejecutarAccion();
+                Console.WriteLine(id);
+                return id;
+ 
             }
             catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
             finally
             {

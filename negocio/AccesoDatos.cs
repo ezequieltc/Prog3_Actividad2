@@ -45,8 +45,23 @@ namespace negocio
             }
         }
 
+        public int ejecutarAccion()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();             
+                int id = (int)comando.ExecuteScalar();
+                return id;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
-        public void ejecutarAccion()
+        }
+
+        public void ejecutarAccionNoEscalar()
         {
             comando.Connection = conexion;
             try
@@ -58,6 +73,7 @@ namespace negocio
             {
                 throw ex;
             }
+
         }
 
         public void cerrarConexion()
