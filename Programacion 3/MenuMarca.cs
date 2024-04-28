@@ -1,35 +1,37 @@
-﻿using System;
+﻿using dominio;
+using negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
-using dominio;
-using negocio;
 
 namespace Programacion_3
 {
-    public partial class MenuCategoria : Form
+    public partial class MenuMarca : Form
     {
-        private CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-        public MenuCategoria()
+        MarcaNegocio marcaNegocio = new MarcaNegocio();
+        public MenuMarca()
         {
             InitializeComponent();
         }
         private void MenuCategoria_Load(object sender, EventArgs e)
         {
-            dgvCategoria.DataSource = categoriaNegocio.listarCategorias();
-            dgvCategoria.Rows[0].Selected = true;
-            Categoria seleccion = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+            
+            dgvMarca.DataSource = marcaNegocio.listarMarcas();
+            dgvMarca.Rows[0].Selected = true;
+            Marca seleccion = (Marca)dgvMarca.CurrentRow.DataBoundItem;
             textBoxDescripcion.Text = seleccion.ToString();
         }
         private void ClickEnCelda(object sender, DataGridViewCellEventArgs e)
         {
-            Categoria seleccion = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+            Marca seleccion = (Marca)dgvMarca.CurrentRow.DataBoundItem;
             textBoxDescripcion.Text = seleccion.ToString();
         }
 
@@ -40,15 +42,15 @@ namespace Programacion_3
 
         private void buttonAgregar_Click(object sender, EventArgs e)
         {
-            if(textBoxAgregar.Text.Length > 0 && !Regex.IsMatch(textBoxAgregar.Text, @"^\s"))
+            if (textBoxAgregar.Text.Length > 0 && !Regex.IsMatch(textBoxAgregar.Text, @"^\s"))
             {
                 try
                 {
-                    categoriaNegocio.agregar(textBoxAgregar.Text);
+                    marcaNegocio.agregar(textBoxAgregar.Text);
                     textBoxAgregar.Text = "";
-                    dgvCategoria.DataSource = categoriaNegocio.listarCategorias();
+                    dgvMarca.DataSource = marcaNegocio.listarMarcas();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Error " + ex.ToString());
                 }
@@ -57,14 +59,15 @@ namespace Programacion_3
             {
                 MessageBox.Show("La descripción no puede estar en blanco ni empezar con espacios.");
             }
-            
+
         }
 
         private void checkBoxEdicion_CheckedChanged(object sender, EventArgs e)
         {
             textBoxDescripcion.Enabled = checkBoxEdicion.Checked;
-            
+
         }
+
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             //---------- TODO ------------
@@ -74,8 +77,8 @@ namespace Programacion_3
             //{
             //    try
             //    {
-            //        categoriaNegocio.actualizar(textBoxDescripcion.Text);
-            //        dgvMarca.DataSource = categoriaNegocio.listarMarcas();
+            //        marcaNegocio.actualizar(textBoxDescripcion.Text);
+            //        dgvMarca.DataSource = marcaNegocio.listarMarcas();
             //    }
             //    catch (Exception ex)
             //    {
@@ -94,4 +97,3 @@ namespace Programacion_3
         }
     }
 }
-

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using dominio;
 using negocio;
-
+using System.Text.RegularExpressions;
 namespace Programacion_3
 {
     public partial class MenuAgregar : Form
@@ -47,12 +47,21 @@ namespace Programacion_3
 
         private void buttonAgregarImagen_Click(object sender, EventArgs e)
         {
-            buscarArchivo.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.gif|Todos los archivos|*.*";
+            buscarArchivo.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.gif";
             buscarArchivo.ShowDialog();
             string[] seleccion = buscarArchivo.FileNames;
             foreach(string archivo in seleccion)
             {
-                listBoxNombres.Items.Add(archivo);
+                if (!Regex.IsMatch(archivo, @"\.(jpg|jpeg|png)$"))
+                {
+                    MessageBox.Show("Solo se permiten archivos de imagen.");
+                    return;
+                }
+                else
+                {
+                    listBoxNombres.Items.Add(archivo);
+                }
+
             }
         }
 
@@ -75,7 +84,10 @@ namespace Programacion_3
             if (listaImagenes.Count() != 0)
             {
                 int id = articuloNegocio.insertar(nuevoArticulo);
-                try { imagenNegocio.insertar(listaImagenes, id); }
+                try { 
+                    imagenNegocio.insertar(listaImagenes, id);
+                    MessageBox.Show("Articulo agregado correctamente.");
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
