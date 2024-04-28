@@ -85,7 +85,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.configurarConsulta("UPDATE INTO MARCAS SET  Descripcion = @descripcion WHERE Id = @idMarca");
+                datos.configurarConsulta("UPDATE MARCAS SET Descripcion = @descripcion WHERE Id = @idMarca");
                 datos.setearParametros("@idMarca", marca.Id);
                 datos.setearParametros("@descripcion", marca.Descripcion);
                 datos.ejecutarAccionNoEscalar();
