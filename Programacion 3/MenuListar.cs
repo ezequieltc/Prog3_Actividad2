@@ -245,9 +245,12 @@ namespace Programacion_3
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             List<Articulo> listaFiltrada;
-            string filtro = txtFiltrarNombre.Text;
-            string filtro2 = txtFiltroCodigo.Text;
-            
+            string filtro = txtFiltrarNombre.Text; //Cambiar el nombre por algo que indique filtro por nombre
+            string filtro2 = txtFiltroCodigo.Text; //Cambiar el nombre por algo que indique filtro por codigo
+
+            //Hacer caso ambos filtros vacios, quedaria la misma lista
+            // Filtro de ambas cosas no vacias, chequear que el nombre tenga filtro por nombre Y codigo el filtro por codigo
+            // Si alguno es vacio, armar ambos casos y solo filtrar la columna que corresponda
             if(filtro != "")
             {
                 listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Codigo.ToUpper().Contains(filtro.ToUpper()));
