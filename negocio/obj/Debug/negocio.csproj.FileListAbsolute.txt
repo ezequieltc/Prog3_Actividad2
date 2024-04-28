@@ -1,0 +1,9 @@
+C:\Users\igromano\source\repos\Actividad 3\negocio\bin\Debug\negocio.dll
+C:\Users\igromano\source\repos\Actividad 3\negocio\bin\Debug\negocio.pdb
+C:\Users\igromano\source\repos\Actividad 3\negocio\bin\Debug\dominio.dll
+C:\Users\igromano\source\repos\Actividad 3\negocio\bin\Debug\dominio.pdb
+C:\Users\igromano\source\repos\Actividad 3\negocio\obj\Debug\negocio.csproj.AssemblyReference.cache
+C:\Users\igromano\source\repos\Actividad 3\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
+C:\Users\igromano\source\repos\Actividad 3\negocio\obj\Debug\negocio.csproj.Up2Date
+C:\Users\igromano\source\repos\Actividad 3\negocio\obj\Debug\negocio.dll
+C:\Users\igromano\source\repos\Actividad 3\negocio\obj\Debug\negocio.pdb

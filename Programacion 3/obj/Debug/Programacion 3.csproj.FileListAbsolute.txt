@@ -1,0 +1,18 @@
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\bin\Debug\Programacion 3.exe.config
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\bin\Debug\Programacion 3.exe
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\bin\Debug\Programacion 3.pdb
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\bin\Debug\dominio.dll
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\bin\Debug\negocio.dll
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\bin\Debug\dominio.pdb
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\bin\Debug\negocio.pdb
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\obj\Debug\Programacion 3.csproj.AssemblyReference.cache
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\obj\Debug\Programacion_3.MenuMarca.resources
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\obj\Debug\Programacion_3.MenuAgregar.resources
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\obj\Debug\Programacion_3.MenuCategoria.resources
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\obj\Debug\Programacion_3.MenuListar.resources
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\obj\Debug\Programacion_3.Properties.Resources.resources
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\obj\Debug\Programacion 3.csproj.GenerateResource.cache
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\obj\Debug\Programacion 3.csproj.CoreCompileInputs.cache
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\obj\Debug\Programa.7564972C.Up2Date
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\obj\Debug\Programacion 3.exe
+C:\Users\igromano\source\repos\Actividad 3\Programacion 3\obj\Debug\Programacion 3.pdb
