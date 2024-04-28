@@ -18,8 +18,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.configurarConsulta("" +
-                    "SELECT ARTICULOS.Id as id_Art,Codigo, Nombre, Precio, ARTICULOS.Descripcion as descArt, MARCAS.Descripcion as descMarca, CATEGORIAS.Descripcion as descCat, MARCAS.Id as Id_Marca, CATEGORIAS.Id as Id_Categoria from ARTICULOS INNER JOIN MARCAS ON ARTICULOS.IdMarca = MARCAS.Id INNER JOIN CATEGORIAS ON ARTICULOS.IdCategoria = CATEGORIAS.Id");
+                datos.configurarConsulta("SELECT ARTICULOS.Id as id_Art,Codigo, Nombre, Precio, ARTICULOS.Descripcion as descArt, MARCAS.Descripcion as descMarca, CATEGORIAS.Descripcion as descCat, MARCAS.Id as Id_Marca, CATEGORIAS.Id as Id_Categoria from ARTICULOS INNER JOIN MARCAS ON ARTICULOS.IdMarca = MARCAS.Id INNER JOIN CATEGORIAS ON ARTICULOS.IdCategoria = CATEGORIAS.Id");
                 datos.ejecutarConsulta();
 
                 while (datos.Lector.Read())
@@ -59,7 +58,13 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.configurarConsulta("insert into ARTICULOS (Codigo,Nombre,Descripcion, Precio, IdMarca, IdCategoria) OUTPUT INSERTED.ID values('" + articulo.Codigo + "','" + articulo.Nombre + "','" + articulo.Descripcion + "','" + articulo.Precio + "','" + articulo.Marca.Id + "','" + articulo.Categoria.Id + "')");
+                datos.configurarConsulta("insert into ARTICULOS (Codigo,Nombre,Descripcion, Precio, IdMarca, IdCategoria) OUTPUT INSERTED.ID values(@codigo, @nombre, @descripcion, @precio, @idMarca, @idCategoria)");
+                datos.setearParametros("@codigo", articulo.Codigo);
+                datos.setearParametros("@nombre", articulo.Nombre);
+                datos.setearParametros("@descripcion", articulo.Descripcion);
+                datos.setearParametros("@precio", articulo.Precio);
+                datos.setearParametros("@idMarca", articulo.Marca.Id);
+                datos.setearParametros("@idCategoria", articulo.Categoria.Id);
                 int id = datos.ejecutarAccion();
                 Console.WriteLine(id);
                 return id;
@@ -82,11 +87,11 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.configurarConsulta("UPDATE ARTICULOS SET Codigo = @codigo ,Nombre = @nombre ,Descripcion = @descripcion ,IdMarca = @marca ,IdCategoria = @idCategoria ,Precio = @precio WHERE Id = @idArticulo");
+                datos.configurarConsulta("UPDATE ARTICULOS SET Codigo = @codigo ,Nombre = @nombre ,Descripcion = @descripcion ,IdMarca = @idMarca ,IdCategoria = @idCategoria ,Precio = @precio WHERE Id = @idArticulo");
                 datos.setearParametros("@codigo", articulo.Codigo);
                 datos.setearParametros("@nombre", articulo.Nombre);
                 datos.setearParametros("@descripcion", articulo.Descripcion);
-                datos.setearParametros("@marca", articulo.Marca);
+                datos.setearParametros("@idMarca", articulo.Marca.Id);
                 datos.setearParametros("@idCategoria", articulo.Categoria.Id);
                 datos.setearParametros("@precio", articulo.Precio);
                 datos.setearParametros("@idArticulo", articulo.Id);

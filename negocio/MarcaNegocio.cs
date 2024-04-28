@@ -44,8 +44,9 @@ namespace negocio
 
             try
             {
-                datos.configurarConsulta("insert into MARCAS values('" + marca +"')");
-                datos.ejecutarAccion();
+                datos.configurarConsulta("insert into MARCAS values(@marcasDescripcion)");
+                datos.setearParametros("@marcasDescripcion", marca);
+                datos.ejecutarAccionNoEscalar();
             }
             catch (Exception ex)
             {
