@@ -46,7 +46,9 @@ namespace Programacion_3
 
         private void ClickEnCelda(object sender, DataGridViewCellEventArgs e)
         {
+            ImagenNegocio tmpNegocioImagenes = new ImagenNegocio();
             contadorImg = 1;
+            labelImg.Text = contadorImg.ToString();
             Articulo seleccion = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             listaImagenesSelec.Clear();
             textBoxCodigo.Text = seleccion.Codigo;
@@ -55,6 +57,7 @@ namespace Programacion_3
             numericUpDownPrecio.Value = seleccion.Precio;
             comboBoxMarca.Text = seleccion.Marca.ToString();
             comboBoxCategoria.Text = seleccion.Categoria.ToString();
+            listaImagenes = tmpNegocioImagenes.listarImagenes();
             foreach(Imagen img in listaImagenes)
             {
                 if (img.IdArticulo == seleccion.Id)
@@ -263,6 +266,28 @@ namespace Programacion_3
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = listaFiltrada;
 
+        }
+
+        public void actualizarGrid()
+        {
+            ArticuloNegocio tmpNegocioArticulo = new ArticuloNegocio();
+            dgvArticulos.DataSource = tmpNegocioArticulo.listarArticulos();
+            dgvArticulos.Refresh();
+        }
+
+        private void marcaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form ventana in Application.OpenForms)
+            {
+                if (ventana.GetType() == typeof(MenuMarca))
+                {
+                    ventana.BringToFront();
+                    return;
+                }
+
+            }
+            MenuMarca menuMarca = new MenuMarca();
+            menuMarca.Show();
         }
     }
 }

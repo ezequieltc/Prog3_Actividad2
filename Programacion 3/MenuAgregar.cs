@@ -71,9 +71,37 @@ namespace Programacion_3
             ImagenNegocio imagenNegocio = new ImagenNegocio();
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             Articulo nuevoArticulo = new Articulo();
-            nuevoArticulo.Codigo = textBoxCodigo.Text;
-            nuevoArticulo.Descripcion = textBoxDescripcion.Text;
-            nuevoArticulo.Nombre = textBoxNombre.Text;
+            if (textBoxCodigo.Text.Length > 0 && !Regex.IsMatch(textBoxCodigo.Text, @"^\s"))
+            {
+                nuevoArticulo.Codigo = textBoxCodigo.Text;
+            }
+            else
+            {
+                
+                MessageBox.Show("El codigo no puede estar vacío o empezar con espacios");
+                return;
+            }
+            if (textBoxDescripcion.Text.Length > 0 && !Regex.IsMatch(textBoxDescripcion.Text, @"^\s"))
+            {
+                nuevoArticulo.Descripcion = textBoxDescripcion.Text;
+            }
+            else
+            {
+
+                MessageBox.Show("La descripción no puede estar vacía o empezar con espacios");
+                return;
+            }
+            if (textBoxNombre.Text.Length > 0 && !Regex.IsMatch(textBoxNombre.Text, @"^\s"))
+            {
+                nuevoArticulo.Nombre = textBoxNombre.Text;
+            }
+            else
+            {
+
+                MessageBox.Show("El nombre no puede estar vacío o empezar con espacios");
+                return;
+            }
+
             nuevoArticulo.Precio = numericUpDownPrecio.Value;
             nuevoArticulo.Marca = (Marca)comboBoxMarca.SelectedItem;
             nuevoArticulo.Categoria = (Categoria)comboBoxCategoria.SelectedItem;
@@ -87,6 +115,23 @@ namespace Programacion_3
                 try { 
                     imagenNegocio.insertar(listaImagenes, id);
                     MessageBox.Show("Articulo agregado correctamente.");
+                    textBoxCodigo.Text = "";
+                    textBoxDescripcion.Text = "";
+                    textBoxNombre.Text = "";
+                    numericUpDownPrecio.Value = 0;
+                    listBoxNombres.Items.Clear();
+                    foreach (Form ventana in Application.OpenForms)
+                    {
+                        if (ventana.GetType() == typeof(MenuListar))
+                        {
+                            MenuListar menuListar = (MenuListar)ventana;
+                            menuListar.actualizarGrid();
+                        }
+
+                    }
+
+
+
                 }
                 catch (Exception ex)
                 {

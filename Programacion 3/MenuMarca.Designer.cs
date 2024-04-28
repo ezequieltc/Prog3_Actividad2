@@ -52,6 +52,7 @@
             this.checkBoxEdicion.TabIndex = 27;
             this.checkBoxEdicion.Text = "Modo Edicion";
             this.checkBoxEdicion.UseVisualStyleBackColor = true;
+            this.checkBoxEdicion.CheckedChanged += new System.EventHandler(this.checkBoxEdicion_CheckedChanged);
             // 
             // textBoxAgregar
             // 
@@ -164,6 +165,7 @@
             this.Controls.Add(this.label1);
             this.Name = "MenuMarca";
             this.Text = "AgregarMarca";
+            this.Load += new System.EventHandler(this.MenuMarca_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarca)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

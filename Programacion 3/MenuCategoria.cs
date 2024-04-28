@@ -44,9 +44,12 @@ namespace Programacion_3
             {
                 try
                 {
+                    buttonAgregar.Enabled = true;   
                     categoriaNegocio.agregar(textBoxAgregar.Text);
                     textBoxAgregar.Text = "";
+                    MessageBox.Show("Categoría agregada correctamente.");
                     dgvCategoria.DataSource = categoriaNegocio.listarCategorias();
+                    dgvCategoria.Refresh();
                 }
                 catch(Exception ex)
                 {
@@ -63,29 +66,34 @@ namespace Programacion_3
         private void checkBoxEdicion_CheckedChanged(object sender, EventArgs e)
         {
             textBoxDescripcion.Enabled = checkBoxEdicion.Checked;
-            
+            buttonGuardar.Enabled = checkBoxEdicion.Checked;
+
+
         }
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            //---------- TODO ------------
-            //Logica para la actualizacion de la marca
+            Categoria tmpCategoria = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+            if (textBoxDescripcion.Text.Length > 0 && !Regex.IsMatch(textBoxDescripcion.Text, @"^\s"))
+            {
+                try
+                {
+                    tmpCategoria.Descripcion = textBoxDescripcion.Text;
+                    categoriaNegocio.actualizar(tmpCategoria);
+                    MessageBox.Show("Categoria actualizada correctamente.");
+                    dgvCategoria.DataSource = categoriaNegocio.listarCategorias();
+                    dgvCategoria.Refresh();
 
-            //if (textBoxDescripcion.Text.Length > 0 && !Regex.IsMatch(textBoxDescripcion.Text, @"^\s"))
-            //{
-            //    try
-            //    {
-            //        categoriaNegocio.actualizar(textBoxDescripcion.Text);
-            //        dgvMarca.DataSource = categoriaNegocio.listarMarcas();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show("Error " + ex.ToString());
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("La descripción no puede estar en blanco ni empezar con espacios.");
-            //}
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error " + ex.ToString());
+                }
+            }
+            else
+            {
+                MessageBox.Show("La descripción no puede estar en blanco ni empezar con espacios.");
+            }
+            
         }
 
         private void buttonDescartar_Click(object sender, EventArgs e)

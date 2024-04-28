@@ -55,6 +55,7 @@
             // 
             // buttonGuardar
             // 
+            this.buttonGuardar.Enabled = false;
             this.buttonGuardar.Location = new System.Drawing.Point(40, 415);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(88, 27);

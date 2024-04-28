@@ -16,14 +16,13 @@ namespace Programacion_3
 {
     public partial class MenuMarca : Form
     {
-        MarcaNegocio marcaNegocio = new MarcaNegocio();
+        private MarcaNegocio marcaNegocio = new MarcaNegocio();
         public MenuMarca()
         {
             InitializeComponent();
         }
-        private void MenuCategoria_Load(object sender, EventArgs e)
+        private void MenuMarca_Load(object sender, EventArgs e)
         {
-            
             dgvMarca.DataSource = marcaNegocio.listarMarcas();
             dgvMarca.Rows[0].Selected = true;
             Marca seleccion = (Marca)dgvMarca.CurrentRow.DataBoundItem;
@@ -49,6 +48,8 @@ namespace Programacion_3
                     marcaNegocio.agregar(textBoxAgregar.Text);
                     textBoxAgregar.Text = "";
                     dgvMarca.DataSource = marcaNegocio.listarMarcas();
+                    dgvMarca.Refresh();
+                    MessageBox.Show("Marca ingresada correctamente.");
                 }
                 catch (Exception ex)
                 {
@@ -70,30 +71,35 @@ namespace Programacion_3
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            //---------- TODO ------------
-            //Logica para la actualizacion de la marca
 
-            //if (textBoxDescripcion.Text.Length > 0 && !Regex.IsMatch(textBoxDescripcion.Text, @"^\s"))
-            //{
-            //    try
-            //    {
-            //        marcaNegocio.actualizar(textBoxDescripcion.Text);
-            //        dgvMarca.DataSource = marcaNegocio.listarMarcas();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show("Error " + ex.ToString());
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("La descripción no puede estar en blanco ni empezar con espacios.");
-            //}
+            if (textBoxDescripcion.Text.Length > 0 && !Regex.IsMatch(textBoxDescripcion.Text, @"^\s"))
+            {
+                try
+                {
+
+                    Marca tmpMarca = (Marca)dgvMarca.CurrentRow.DataBoundItem;
+                    tmpMarca.Descripcion = textBoxDescripcion.Text;
+                    marcaNegocio.actualizar(tmpMarca);
+                    MessageBox.Show("Marca actualizada correctamente.");
+                    dgvMarca.DataSource = marcaNegocio.listarMarcas();
+                    dgvMarca.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error " + ex.ToString());
+                }
+            }
+            else
+            {
+                MessageBox.Show("La descripción no puede estar en blanco ni empezar con espacios.");
+            }
         }
 
         private void buttonDescartar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+
     }
 }
