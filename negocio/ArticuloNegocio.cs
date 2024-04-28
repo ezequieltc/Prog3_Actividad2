@@ -12,10 +12,16 @@ namespace negocio
     public class ArticuloNegocio
     {
         List<Articulo> listado = new List<Articulo>();
+        AccesoDatos datos;
+
+        public ArticuloNegocio()
+        {
+            datos = new AccesoDatos();
+        }
 
         public List<Articulo> listarArticulos()
         {
-            AccesoDatos datos = new AccesoDatos();
+            
             try
             {
                 datos.configurarConsulta("SELECT ARTICULOS.Id as id_Art,Codigo, Nombre, Precio, ARTICULOS.Descripcion as descArt, MARCAS.Descripcion as descMarca, CATEGORIAS.Descripcion as descCat, MARCAS.Id as Id_Marca, CATEGORIAS.Id as Id_Categoria from ARTICULOS INNER JOIN MARCAS ON ARTICULOS.IdMarca = MARCAS.Id INNER JOIN CATEGORIAS ON ARTICULOS.IdCategoria = CATEGORIAS.Id");
@@ -55,8 +61,7 @@ namespace negocio
 
         public int insertar(Articulo articulo)
         {
-            AccesoDatos datos = new AccesoDatos();
-            try
+          try
             {
                 datos.configurarConsulta("insert into ARTICULOS (Codigo,Nombre,Descripcion, Precio, IdMarca, IdCategoria) OUTPUT INSERTED.ID values(@codigo, @nombre, @descripcion, @precio, @idMarca, @idCategoria)");
                 datos.setearParametros("@codigo", articulo.Codigo);
@@ -84,7 +89,6 @@ namespace negocio
 
         public void actualizar(Articulo articulo)
         {
-            AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.configurarConsulta("UPDATE ARTICULOS SET Codigo = @codigo ,Nombre = @nombre ,Descripcion = @descripcion ,IdMarca = @idMarca ,IdCategoria = @idCategoria ,Precio = @precio WHERE Id = @idArticulo");
@@ -110,8 +114,6 @@ namespace negocio
         }
         public void eliminar(Articulo articulo)
         {
-            AccesoDatos datos = new AccesoDatos();
-
             try
             {
                 datos.configurarConsulta("DELETE FROM ARTICULOS WHERE Id = @idArticulo");

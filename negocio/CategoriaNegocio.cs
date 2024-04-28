@@ -9,11 +9,17 @@ namespace negocio
 {
     public class CategoriaNegocio
     {
-        List<Categoria> listado = new List<Categoria>();
+        private List<Categoria> listado = new List<Categoria>();
+        private AccesoDatos datos;
+
+        public CategoriaNegocio()
+        {
+            datos = new AccesoDatos();
+        }
 
         public List<Categoria> listarCategorias()
         {
-            AccesoDatos datos = new AccesoDatos();
+            
             try
             {
                 datos.configurarConsulta("SELECT Id, Descripcion from CATEGORIAS");
@@ -41,7 +47,6 @@ namespace negocio
         }
         public void agregar(string categoria)
         {
-            AccesoDatos datos = new AccesoDatos();
 
             try
             {
@@ -62,7 +67,7 @@ namespace negocio
 
         public void eliminar(Categoria categoria)
         {
-            AccesoDatos datos = new AccesoDatos();
+
             try
             {
                 datos.configurarConsulta("DELETE FROM CATEGORIAS WHERE Id = @idCategoria");
@@ -84,7 +89,7 @@ namespace negocio
 
         public void actualizar(Categoria categoria)
         {
-            AccesoDatos datos = new AccesoDatos();
+
             try
             {
                 datos.configurarConsulta("UPDATE CATEGORIAS SET  Descripcion = @descripcion WHERE Id = @idCategoria");

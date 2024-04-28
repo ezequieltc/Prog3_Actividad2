@@ -10,10 +10,15 @@ namespace negocio
     public class MarcaNegocio
     {
         List<Marca> listado = new List<Marca>();
+        AccesoDatos datos;
+
+        public MarcaNegocio()
+        {
+            datos = new AccesoDatos();
+        }
 
         public List<Marca> listarMarcas()
         {
-            AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.configurarConsulta("SELECT Id, Descripcion from MARCAS");
@@ -40,8 +45,6 @@ namespace negocio
 
         public void agregar(string marca)
         {
-            AccesoDatos datos = new AccesoDatos();
-
             try
             {
                 datos.configurarConsulta("insert into MARCAS values(@marcasDescripcion)");
@@ -61,7 +64,6 @@ namespace negocio
 
         public void eliminar(Marca marca)
         {
-            AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.configurarConsulta("DELETE FROM MARCAS WHERE Id = @idMarca");
@@ -83,7 +85,6 @@ namespace negocio
 
         public void actualizar(Marca marca)
         {
-            AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.configurarConsulta("UPDATE MARCAS SET Descripcion = @descripcion WHERE Id = @idMarca");
