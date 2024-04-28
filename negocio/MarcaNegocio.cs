@@ -63,7 +63,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.configurarConsulta("DELETE FROM MARCA WHERE Id = @idMarca");
+                datos.configurarConsulta("DELETE FROM MARCAS WHERE Id = @idMarca");
                 datos.setearParametros("@idMarca", marca.Id);
                 datos.ejecutarAccionNoEscalar();
 
@@ -85,7 +85,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.configurarConsulta("UPDATE INTO MARCA SET  Descripcion = @descripcion WHERE Id = @idMarca");
+                datos.configurarConsulta("UPDATE INTO MARCAS SET  Descripcion = @descripcion WHERE Id = @idMarca");
                 datos.setearParametros("@idMarca", marca.Id);
                 datos.setearParametros("@descripcion", marca.Descripcion);
                 datos.ejecutarAccionNoEscalar();
