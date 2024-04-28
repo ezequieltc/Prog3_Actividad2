@@ -54,8 +54,6 @@
             this.txtFiltrarNombre = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtFiltroCodigo = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBoxCat = new System.Windows.Forms.ComboBox();
             this.BoxMarcaFiltro = new System.Windows.Forms.ComboBox();
@@ -76,6 +74,7 @@
             this.marcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxItem = new System.Windows.Forms.PictureBox();
+            this.btnLimpiarFiltros = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrecio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -343,23 +342,6 @@
             this.txtFiltroCodigo.Size = new System.Drawing.Size(183, 20);
             this.txtFiltroCodigo.TabIndex = 43;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(18, 75);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 13);
-            this.label8.TabIndex = 45;
-            this.label8.Text = "Codigo:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(67, 68);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(159, 20);
-            this.textBox1.TabIndex = 46;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -385,6 +367,7 @@
             this.BoxMarcaFiltro.Name = "BoxMarcaFiltro";
             this.BoxMarcaFiltro.Size = new System.Drawing.Size(140, 21);
             this.BoxMarcaFiltro.TabIndex = 50;
+            this.BoxMarcaFiltro.SelectedIndexChanged += new System.EventHandler(this.BoxMarcaFiltro_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -525,21 +508,21 @@
             // articuloToolStripMenuItem
             // 
             this.articuloToolStripMenuItem.Name = "articuloToolStripMenuItem";
-            this.articuloToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.articuloToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.articuloToolStripMenuItem.Text = "Articulo";
             this.articuloToolStripMenuItem.Click += new System.EventHandler(this.articuloToolStripMenuItem_Click);
             // 
             // marcaToolStripMenuItem
             // 
             this.marcaToolStripMenuItem.Name = "marcaToolStripMenuItem";
-            this.marcaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.marcaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.marcaToolStripMenuItem.Text = "Marca";
             this.marcaToolStripMenuItem.Click += new System.EventHandler(this.marcaToolStripMenuItem_Click);
             // 
             // categoriaToolStripMenuItem
             // 
             this.categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
-            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.categoriaToolStripMenuItem.Text = "Categoria";
             this.categoriaToolStripMenuItem.Click += new System.EventHandler(this.categoriaToolStripMenuItem_Click);
             // 
@@ -553,11 +536,22 @@
             this.pictureBoxItem.TabIndex = 55;
             this.pictureBoxItem.TabStop = false;
             // 
+            // btnLimpiarFiltros
+            // 
+            this.btnLimpiarFiltros.Location = new System.Drawing.Point(67, 70);
+            this.btnLimpiarFiltros.Name = "btnLimpiarFiltros";
+            this.btnLimpiarFiltros.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiarFiltros.TabIndex = 62;
+            this.btnLimpiarFiltros.Text = "Limpiar";
+            this.btnLimpiarFiltros.UseVisualStyleBackColor = true;
+            this.btnLimpiarFiltros.Click += new System.EventHandler(this.btnLimpiarFiltros_Click);
+            // 
             // MenuListar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(793, 721);
+            this.Controls.Add(this.btnLimpiarFiltros);
             this.Controls.Add(this.btnAgregarCategoria);
             this.Controls.Add(this.btnAgregarMarca);
             this.Controls.Add(this.labelImg);
@@ -571,8 +565,6 @@
             this.Controls.Add(this.BoxMarcaFiltro);
             this.Controls.Add(this.comboBoxCat);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.txtFiltroCodigo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtFiltrarNombre);
@@ -645,8 +637,6 @@
         private System.Windows.Forms.TextBox txtFiltrarNombre;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtFiltroCodigo;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboBoxCat;
         private System.Windows.Forms.ComboBox BoxMarcaFiltro;
@@ -667,5 +657,6 @@
         private System.Windows.Forms.ToolStripMenuItem articuloToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem marcaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem;
+        private System.Windows.Forms.Button btnLimpiarFiltros;
     }
 }

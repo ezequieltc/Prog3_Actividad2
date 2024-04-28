@@ -41,6 +41,9 @@ namespace Programacion_3
             listaImagenes = loadImagenes.listarImagenes();
             comboBoxCategoria.DataSource = Categorias;
             comboBoxMarca.DataSource = Marcas;
+            comboBoxCat.DataSource = loadCategoria.listarCategorias();
+            BoxMarcaFiltro.DataSource = loadMarca.listarMarcas();
+
         }
 
 
@@ -248,19 +251,55 @@ namespace Programacion_3
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             List<Articulo> listaFiltrada;
-            string filtro = txtFiltrarNombre.Text; //Cambiar el nombre por algo que indique filtro por nombre
-            string filtro2 = txtFiltroCodigo.Text; //Cambiar el nombre por algo que indique filtro por codigo
+            string filtroPorNombre = txtFiltrarNombre.Text; 
+            string filtroPorCodigo = txtFiltroCodigo.Text;
+            string filtroPorCategoria = comboBoxCat.Text;
+            string filtroPorMarca = comboBoxMarca.Text;
+            decimal numPrecioDesde = numericUpDown1.Value;
+            decimal numPrecioHasta = numericUpDown2.Value;
 
-            //Hacer caso ambos filtros vacios, quedaria la misma lista
-            // Filtro de ambas cosas no vacias, chequear que el nombre tenga filtro por nombre Y codigo el filtro por codigo
-            // Si alguno es vacio, armar ambos casos y solo filtrar la columna que corresponda
-            if(filtro != "")
+
+           
+            List<Articulo> listaTemporal;
+            if (filtroPorNombre != "")
             {
-                listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Codigo.ToUpper().Contains(filtro.ToUpper()));
+                listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtroPorNombre.ToUpper()));
+                listaTemporal = listaFiltrada;
             }
             else
             {
                 listaFiltrada = listaArticulos;
+                listaTemporal = listaFiltrada;
+            }
+
+            if (filtroPorCodigo != "")
+            {
+                listaFiltrada = listaFiltrada.FindAll(x => x.Codigo.ToUpper().Contains(filtroPorCodigo.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = listaTemporal;
+            }
+
+            if (filtroPorCategoria != "")
+            {
+                listaFiltrada = listaFiltrada.FindAll(x => x.Categoria.Descripcion.ToUpper().Contains(filtroPorCategoria.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = listaTemporal;
+            }
+            if (numPrecioDesde != 0 || numPrecioHasta != 0)
+            {
+                listaFiltrada = listaFiltrada.FindAll(x => x.Precio >= numPrecioDesde && x.Precio <= numPrecioHasta);
+            }
+            if (filtroPorMarca != "")
+            {
+                listaFiltrada = listaFiltrada.FindAll(x => x.Marca.Descripcion.ToUpper().Contains(filtroPorMarca.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = listaTemporal;
             }
 
             dgvArticulos.DataSource = null;
@@ -288,6 +327,24 @@ namespace Programacion_3
             }
             MenuMarca menuMarca = new MenuMarca();
             menuMarca.Show();
+        }
+
+        private void BoxMarcaFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+                      
+            dgvArticulos.DataSource = null;
+            txtFiltrarNombre.Text = "";
+            txtFiltroCodigo.Text = "";
+            comboBoxCat.SelectedIndex = -1;
+            BoxMarcaFiltro.SelectedIndex = -1;
+            numericUpDown1.Value = 0;
+            numericUpDown2.Value = 0;
+            actualizarGrid();
         }
     }
 }
