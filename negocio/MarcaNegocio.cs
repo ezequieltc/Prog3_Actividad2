@@ -57,5 +57,49 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void eliminar(Marca marca)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.configurarConsulta("DELETE FROM CATEGORIAS WHERE Id = @idMarca");
+                datos.setearParametros("@idMarca", marca.Id);
+                datos.ejecutarAccionNoEscalar();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public void actualizar(Marca marca)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.configurarConsulta("UPDATE INTO CATEGORIAS SET  Descripcion = @descripcion WHERE Id = @idMarca");
+                datos.setearParametros("@idMarca", marca.Id);
+                datos.setearParametros("@descripcion", marca.Descripcion);
+                datos.ejecutarAccionNoEscalar();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
