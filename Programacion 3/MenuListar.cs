@@ -41,8 +41,10 @@ namespace Programacion_3
             listaImagenes = loadImagenes.listarImagenes();
             comboBoxCategoria.DataSource = Categorias;
             comboBoxMarca.DataSource = Marcas;
-            comboBoxCat.DataSource = loadCategoria.listarCategorias();
-            BoxMarcaFiltro.DataSource = loadMarca.listarMarcas();
+            comboBoxCat.DataSource = Categorias;
+            BoxMarcaFiltro.DataSource = Marcas;
+            //comboBoxCat.DataSource = loadCategoria.listarCategorias();
+            //BoxMarcaFiltro.DataSource = loadMarca.listarMarcas();
 
         }
 
@@ -250,57 +252,48 @@ namespace Programacion_3
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-            List<Articulo> listaFiltrada;
+            List<Articulo> listaFiltrada = listaArticulos;
             string filtroPorNombre = txtFiltrarNombre.Text; 
             string filtroPorCodigo = txtFiltroCodigo.Text;
-            string filtroPorCategoria = comboBoxCat.Text;
-            string filtroPorMarca = comboBoxMarca.Text;
+            string filtroPorCategoria = (comboBoxCat.SelectedItem == null) ? "" : comboBoxCat.SelectedItem.ToString();
+            string filtroPorMarca = (comboBoxMarca.SelectedItem == null) ? "" : comboBoxMarca.SelectedItem.ToString();
             decimal numPrecioDesde = numericUpDown1.Value;
             decimal numPrecioHasta = numericUpDown2.Value;
 
 
            
-            List<Articulo> listaTemporal;
-            if (filtroPorNombre != "")
+            List<Articulo> listaTemporal = new List<Articulo>();
+            if (!filtroPorNombre.Equals(""))
             {
                 listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtroPorNombre.ToUpper()));
-                listaTemporal = listaFiltrada;
-            }
-            else
-            {
-                listaFiltrada = listaArticulos;
-                listaTemporal = listaFiltrada;
+
             }
 
-            if (filtroPorCodigo != "")
+
+            if (!filtroPorCodigo.Equals(""))
             {
                 listaFiltrada = listaFiltrada.FindAll(x => x.Codigo.ToUpper().Contains(filtroPorCodigo.ToUpper()));
             }
-            else
-            {
-                listaFiltrada = listaTemporal;
-            }
 
-            if (filtroPorCategoria != "")
+            if (!filtroPorCategoria.Equals(""))
             {
                 listaFiltrada = listaFiltrada.FindAll(x => x.Categoria.Descripcion.ToUpper().Contains(filtroPorCategoria.ToUpper()));
             }
-            else
-            {
-                listaFiltrada = listaTemporal;
-            }
-            if (numPrecioDesde != 0 || numPrecioHasta != 0)
-            {
-                listaFiltrada = listaFiltrada.FindAll(x => x.Precio >= numPrecioDesde && x.Precio <= numPrecioHasta);
-            }
-            if (filtroPorMarca != "")
+
+            if (!filtroPorMarca.Equals(""))
             {
                 listaFiltrada = listaFiltrada.FindAll(x => x.Marca.Descripcion.ToUpper().Contains(filtroPorMarca.ToUpper()));
             }
-            else
-            {
-                listaFiltrada = listaTemporal;
-            }
+
+            //if (numPrecioDesde != 0 || numPrecioHasta != 0)
+            //{
+            //    listaFiltrada = listaFiltrada.FindAll(x => x.Precio >= numPrecioDesde && x.Precio <= numPrecioHasta);
+            //}
+            //else
+            //{
+            //    //listaFiltrada = listaTemporal;
+            //    //listaFiltrada = listaArticulos;
+            //}
 
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = listaFiltrada;
