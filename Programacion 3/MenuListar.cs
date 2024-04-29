@@ -41,6 +41,10 @@ namespace Programacion_3
             listaImagenes = loadImagenes.listarImagenes();
             comboBoxCategoria.DataSource = Categorias;
             comboBoxMarca.DataSource = Marcas;
+            comboBoxCat.DataSource = Categorias;
+            BoxMarcaFiltro.DataSource = Marcas;
+            comboBoxCat.SelectedIndex = -1;
+            BoxMarcaFiltro.SelectedIndex = -1;
         }
 
 
@@ -247,23 +251,40 @@ namespace Programacion_3
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-            List<Articulo> listaFiltrada;
-            string filtro = txtFiltrarNombre.Text; //Cambiar el nombre por algo que indique filtro por nombre
-            string filtro2 = txtFiltroCodigo.Text; //Cambiar el nombre por algo que indique filtro por codigo
+            List<Articulo> listaFiltrada = listaArticulos;
+            string filtroPorNombre = txtFiltrarNombre.Text; 
+            string filtroPorCodigo = txtFiltroCodigo.Text;
+            string filtroPorCategoria = (comboBoxCat.SelectedItem == null) ? "" : comboBoxCat.SelectedItem.ToString();
+            string filtroPorMarca = (comboBoxMarca.SelectedItem == null) ? "" : comboBoxMarca.SelectedItem.ToString();
+            decimal numPrecioDesde = numericUpDown1.Value;
+            decimal numPrecioHasta = numericUpDown2.Value;
 
-            //Hacer caso ambos filtros vacios, quedaria la misma lista
-            // Filtro de ambas cosas no vacias, chequear que el nombre tenga filtro por nombre Y codigo el filtro por codigo
-            // Si alguno es vacio, armar ambos casos y solo filtrar la columna que corresponda
-            if(filtro != "")
+
+            if (!filtroPorNombre.Equals(""))
             {
-                listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Codigo.ToUpper().Contains(filtro.ToUpper()));
-            }
-            else
-            {
-                listaFiltrada = listaArticulos;
+                listaFiltrada = listaFiltrada.FindAll(x => x.Nombre.ToUpper().Contains(filtroPorNombre.ToUpper()));
             }
 
-            dgvArticulos.DataSource = null;
+            if (!filtroPorCodigo.Equals(""))
+            {
+                listaFiltrada = listaFiltrada.FindAll(x => x.Codigo.ToUpper().Contains(filtroPorCodigo.ToUpper()));
+            }
+
+            if (!filtroPorCategoria.Equals(""))
+            {
+                listaFiltrada = listaFiltrada.FindAll(x => x.Categoria.Descripcion.ToUpper().Contains(filtroPorCategoria.ToUpper()));
+            }
+
+            if (!filtroPorMarca.Equals(""))
+            {
+                listaFiltrada = listaFiltrada.FindAll(x => x.Marca.Descripcion.ToUpper().Contains(filtroPorMarca.ToUpper()));
+            }
+
+            if (numPrecioDesde != 0 || numPrecioHasta != 0)
+            {
+                listaFiltrada = listaFiltrada.FindAll(x => x.Precio >= numPrecioDesde && x.Precio <= numPrecioHasta);
+            }
+
             dgvArticulos.DataSource = listaFiltrada;
 
         }
@@ -288,6 +309,47 @@ namespace Programacion_3
             }
             MenuMarca menuMarca = new MenuMarca();
             menuMarca.Show();
+        }
+
+        private void BoxMarcaFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+                      
+            dgvArticulos.DataSource = null;
+            txtFiltrarNombre.Text = "";
+            txtFiltroCodigo.Text = "";
+            comboBoxCat.SelectedIndex = -1;
+            comboBoxMarca.SelectedIndex = -1;
+            BoxMarcaFiltro.SelectedIndex = -1;
+            numericUpDown1.Value = 0;
+            numericUpDown2.Value = 0;
+            actualizarGrid();
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo seleccionado;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Está seguro que desea eliminar el artículo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    negocio.eliminar(seleccionado);
+                    actualizarGrid();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
         }
     }
 }
