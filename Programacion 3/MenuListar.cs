@@ -43,9 +43,8 @@ namespace Programacion_3
             comboBoxMarca.DataSource = Marcas;
             comboBoxCat.DataSource = Categorias;
             BoxMarcaFiltro.DataSource = Marcas;
-            //comboBoxCat.DataSource = loadCategoria.listarCategorias();
-            //BoxMarcaFiltro.DataSource = loadMarca.listarMarcas();
-
+            comboBoxCat.SelectedIndex = -1;
+            BoxMarcaFiltro.SelectedIndex = -1;
         }
 
 
@@ -261,14 +260,10 @@ namespace Programacion_3
             decimal numPrecioHasta = numericUpDown2.Value;
 
 
-           
-            List<Articulo> listaTemporal = new List<Articulo>();
             if (!filtroPorNombre.Equals(""))
             {
-                listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtroPorNombre.ToUpper()));
-
+                listaFiltrada = listaFiltrada.FindAll(x => x.Nombre.ToUpper().Contains(filtroPorNombre.ToUpper()));
             }
-
 
             if (!filtroPorCodigo.Equals(""))
             {
@@ -285,17 +280,11 @@ namespace Programacion_3
                 listaFiltrada = listaFiltrada.FindAll(x => x.Marca.Descripcion.ToUpper().Contains(filtroPorMarca.ToUpper()));
             }
 
-            //if (numPrecioDesde != 0 || numPrecioHasta != 0)
-            //{
-            //    listaFiltrada = listaFiltrada.FindAll(x => x.Precio >= numPrecioDesde && x.Precio <= numPrecioHasta);
-            //}
-            //else
-            //{
-            //    //listaFiltrada = listaTemporal;
-            //    //listaFiltrada = listaArticulos;
-            //}
+            if (numPrecioDesde != 0 || numPrecioHasta != 0)
+            {
+                listaFiltrada = listaFiltrada.FindAll(x => x.Precio >= numPrecioDesde && x.Precio <= numPrecioHasta);
+            }
 
-            dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = listaFiltrada;
 
         }
@@ -334,10 +323,16 @@ namespace Programacion_3
             txtFiltrarNombre.Text = "";
             txtFiltroCodigo.Text = "";
             comboBoxCat.SelectedIndex = -1;
+            comboBoxMarca.SelectedIndex = -1;
             BoxMarcaFiltro.SelectedIndex = -1;
             numericUpDown1.Value = 0;
             numericUpDown2.Value = 0;
             actualizarGrid();
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
