@@ -34,7 +34,7 @@ namespace Programacion_3
             listaArticulos = load.listarArticulos();
             dgvArticulos.DataSource = listaArticulos;
             MarcaNegocio loadMarca = new MarcaNegocio();
-            Marcas= loadMarca.listarMarcas();
+            Marcas = loadMarca.listarMarcas();
             CategoriaNegocio loadCategoria = new CategoriaNegocio();
             Categorias = loadCategoria.listarCategorias();
             ImagenNegocio loadImagenes = new ImagenNegocio();
@@ -63,19 +63,19 @@ namespace Programacion_3
             comboBoxMarca.Text = seleccion.Marca.ToString();
             comboBoxCategoria.Text = seleccion.Categoria.ToString();
             listaImagenes = tmpNegocioImagenes.listarImagenes();
-            foreach(Imagen img in listaImagenes)
+            foreach (Imagen img in listaImagenes)
             {
                 if (img.IdArticulo == seleccion.Id)
                 {
                     listaImagenesSelec.Add(img);
                 }
             }
-            cargarImagen(listaImagenesSelec[contadorImg-1].UrlImagen);
+            cargarImagen(listaImagenesSelec[contadorImg - 1].UrlImagen);
         }
 
         private void ModoEdicion(object sender, EventArgs e)
         {
-            
+
             buttonGuardar.Enabled = checkBoxEstado.Checked;
             buttonEliminar.Enabled = checkBoxEstado.Checked;
             textBoxCodigo.ReadOnly = !checkBoxEstado.Checked;
@@ -106,7 +106,7 @@ namespace Programacion_3
             {
                 artTmp.actualizar(tmpArticulo);
                 dgvArticulos.DataSource = artTmp.listarArticulos();
-                
+
             }
             catch (Exception ex)
             {
@@ -116,14 +116,14 @@ namespace Programacion_3
 
         }
 
-        private  void cargarImagen(string direccion) 
+        private void cargarImagen(string direccion)
         {
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
                 pictureBoxItem.Load(direccion);
-              }
-            catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 pictureBoxItem.Image = Properties.Resources.noImage;
             }
@@ -135,7 +135,7 @@ namespace Programacion_3
             {
                 contadorImg += 1;
                 labelImg.Text = contadorImg.ToString();
-                cargarImagen(listaImagenesSelec[contadorImg-1].UrlImagen);
+                cargarImagen(listaImagenesSelec[contadorImg - 1].UrlImagen);
             }
 
         }
@@ -154,17 +154,17 @@ namespace Programacion_3
         {
             string seleccion = comboBoxMarca.Text;
             bool nuevo = true;
-            foreach(Marca marca in Marcas)
+            foreach (Marca marca in Marcas)
             {
                 if (marca.Descripcion.Equals(seleccion))
                 {
                     nuevo = false;
                 }
             }
-            if (nuevo) 
-            { 
+            if (nuevo)
+            {
                 Console.WriteLine("Marca nueva - " + seleccion);
-                DialogResult result =  MessageBox.Show("Desea agregar la marca " + seleccion + "?", "Agregar Marca" ,MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show("Desea agregar la marca " + seleccion + "?", "Agregar Marca", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (result == DialogResult.OK)
                 {
                     try
@@ -217,7 +217,7 @@ namespace Programacion_3
 
         private void articuloToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach(Form ventana in Application.OpenForms)
+            foreach (Form ventana in Application.OpenForms)
             {
                 if (ventana.GetType() == typeof(MenuAgregar))
                 {
@@ -253,7 +253,7 @@ namespace Programacion_3
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             List<Articulo> listaFiltrada = listaArticulos;
-            string filtroPorNombre = txtFiltrarNombre.Text; 
+            string filtroPorNombre = txtFiltrarNombre.Text;
             string filtroPorCodigo = txtFiltroCodigo.Text;
             string filtroPorCategoria = (comboBoxCat.SelectedItem == null) ? "" : comboBoxCat.SelectedItem.ToString();
             string filtroPorMarca = (comboBoxMarca.SelectedItem == null) ? "" : comboBoxMarca.SelectedItem.ToString();
@@ -261,8 +261,8 @@ namespace Programacion_3
             decimal numPrecioHasta = numericUpDown2.Value;
 
 
-           
-            List<Articulo> listaTemporal = new List<Articulo>();
+
+
             if (!filtroPorNombre.Equals(""))
             {
                 listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtroPorNombre.ToUpper()));
@@ -270,10 +270,11 @@ namespace Programacion_3
             }
 
 
-            if (!filtroPorCodigo.Equals(""))
+            /*if (!filtroPorCodigo.Equals(""))
             {
                 listaFiltrada = listaFiltrada.FindAll(x => x.Codigo.ToUpper().Contains(filtroPorCodigo.ToUpper()));
             }
+            */
 
             if (!filtroPorCategoria.Equals(""))
             {
@@ -329,7 +330,7 @@ namespace Programacion_3
 
         private void btnLimpiarFiltros_Click(object sender, EventArgs e)
         {
-                      
+
             dgvArticulos.DataSource = null;
             txtFiltrarNombre.Text = "";
             txtFiltroCodigo.Text = "";
@@ -338,6 +339,29 @@ namespace Programacion_3
             numericUpDown1.Value = 0;
             numericUpDown2.Value = 0;
             actualizarGrid();
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo seleccionado;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Está seguro que desea eliminar el artículo?", "Eliminando",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                if(respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    negocio.eliminar(seleccionado);
+                    actualizarGrid();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
         }
     }
 }
